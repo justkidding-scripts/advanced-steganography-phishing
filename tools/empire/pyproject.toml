@@ -1,0 +1,143 @@
+[tool.poetry]
+name = "empire-bc-security-fork"
+version = "5.9.5"
+description = ""
+authors = ["BC Security <info@bc-security.org>"]
+readme = "README.md"
+homepage = "https://github.com/BC-SECURITY/Empire"
+repository = "https://github.com/BC-SECURITY/Empire.git"
+packages = [
+    { include = "empire.py" },
+    { include = "empire/server/**/*.py" },
+    { include = "empire/client/**/*.py" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+urllib3 = "^2.1.0"
+requests = "^2.31.0"
+iptools = "^0.7.0"
+macholib = "^1.16.3"
+dropbox = "^11.36.2"
+pyOpenSSL = "^23.3.0"
+zlib_wrapper = "^0.1.3"
+netifaces = "^0.11.0"
+jinja2 = "^3.1.2"
+xlutils = "^2.0.0"
+pyparsing = "^3.1.1"
+PyMySQL = "^1.1.0"
+SQLAlchemy = "^2.0.23"
+PyYAML = "^6.0.1"
+SQLAlchemy-Utc = "^0.14.0"
+prompt-toolkit = "^3.0.43"
+terminaltables = "^3.1.10"
+humanize = "^4.9.0"
+pycryptodome = "^3.19.0"
+cryptography = "^41.0.7"
+fastapi = "^0.104.1"
+uvicorn = "^0.24.0"
+jq = "^1.6.0"
+aiofiles = "^23.2.1"
+python-multipart = "^0.0.6"
+python-jose = {version = "^3.3.0", extras = ["cryptography"]}
+passlib = {version = "^1.7.4", extras = ["bcrypt"]}
+websockify = "^0.10.0"
+websockets = "^11.0.3"
+pyperclip = "^1.8.2"
+pyvnc = {git = "https://github.com/BC-SECURITY/pyVNC.git"}
+python-socketio = {extras = ["client"], version = "^5.10.0"}
+Flask = "^2.3.3"
+pysecretsocks = {git = "https://github.com/BC-SECURITY/PySecretSOCKS.git", rev = "da5be0e"}
+donut-shellcode = { version = "^1.0.2", markers = "platform_machine == 'x86_64' or platform_machine == 'amd64'" }
+python-obfuscator = "^0.0.2"
+pyinstaller = "^5.13.2"
+md2pdf = {git = "https://github.com/bc-security/md2pdf", rev = "48d5a46"}
+tabulate = "^0.9.0"
+stix2 = "^3.0.1"
+docopt-ng = "^0.9.0"
+packaging = "^23.2"
+bcrypt = "4.0.1" # Locked to 4.0.1 due to passlib no longer being updated https://github.com/pyca/bcrypt/issues/684
+
+
+[tool.poetry.group.dev.dependencies]
+httpx = "^0.24.1" # For starlette TestClient
+black = "^23.12.0"
+pytest = "^7.4.3"
+pytest-timeout = "^2.2.0"
+ruff = "^0.1.9"
+pytest-cov = "^4.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+extend-exclude = '''
+    (empire/server/data*)
+    | (empire/server/downloads*)
+    | (empire/client/generated-stagers*)
+    | (empire/client/downloads*)
+'''
+force-exclude = '''
+    (empire/server/data*)
+    | (empire/server/downloads*)
+    | (empire/client/generated-stagers*)
+    | (empire/client/downloads*)
+'''
+
+#include = '.*\.(plugin)$'
+
+[tool.ruff]
+extend-exclude = [
+    'empire/server/data',
+    'empire/server/downloads',
+    # This file is a pain to untangle for some of the linting rules
+    # it is from a 3rd party library, and its mostly untested.
+    'empire/server/common/pylnk.py',
+    'empire/server/common/malleable',
+    'empire/client/generated-stagers',
+    'empire/client/downloads',
+    'empire/server/plugins/Report-Generation-Plugin'
+]
+# Will revisit line lengths later. Black won't format the strings and comments
+# by default. And the experimental flag still has some issues.
+# fixes right now: https://github.com/psf/black/issues/2188
+extend-ignore = ["E501"]
+
+select = [
+    "E", # pycodestyle
+    "W", # pycodestyle
+    "F", # pyflakes
+    "I", # isort
+    "UP", # pyupgrade
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "RUF", # ruff
+    "SIM", # flake8-simplify
+]
+target-version = "py310"
+
+[tool.ruff.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "fastapi.params.Depends", "fastapi.Query", "fastapi.params.Query", "fastapi.File"]
+
+[tool.coverage.run]
+omit = [
+    "empire/server/data/*",
+    ]
+
+[tool.coverage.report]
+# https://coverage.readthedocs.io/en/latest/config.html
+exclude_also = [
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+    ]
+
+ignore_errors = true
