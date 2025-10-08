@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /$
+Allow: /about
+Allow: /faq
+Allow: /support
+Allow: /security
+Allow: /privacy
+Allow: /terms
+Allow: /download
+
+Disallow: /dl/
+Disallow: /z/
+Disallow: /k/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /internal/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /cdn-cgi/
+
+Sitemap: https://telegrams.app/sitemap.xml
+
+# Telegram Web Application
+# For any issues, please contact support@telegrams.app

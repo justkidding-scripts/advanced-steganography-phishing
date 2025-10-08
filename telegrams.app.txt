@@ -1,0 +1,46 @@
+;;
+;; Domain:     telegrams.app.
+;; Exported:   2025-10-08 12:10:26
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+telegrams.app	3600	IN	SOA	ainsley.ns.cloudflare.com. dns.cloudflare.com. 2051159202 10000 2400 604800 3600
+
+;; NS Records
+telegrams.app.	86400	IN	NS	ainsley.ns.cloudflare.com.
+telegrams.app.	86400	IN	NS	zeus.ns.cloudflare.com.
+
+;; A Records
+telegrams.app.	1	IN	A	138.197.148.152 ; cf_tags=cf-proxied:true
+www.telegrams.app.	1	IN	A	138.197.148.152 ; cf_tags=cf-proxied:true
+
+;; MX Records
+telegrams.app.	1	IN	MX	400 samsara.
+
+;; TXT Records
+_acme-challenge.telegrams.app.	120	IN	TXT	"Dj68QHgAS29-AhQR5-PSshsgjs0E7kGfuOJI1pHquDc"
+_acme-challenge.telegrams.app.	120	IN	TXT	"kd9B97kvmK2ZHuJm3NGwtqvAt2HLSQa9Eovq54gVHEo"
+_acme-challenge.telegrams.app.	120	IN	TXT	"wFjxKIRjFRQfcD0CpUtCyTacOP4hhsHq0gH48Sj0Omk"
+_acme-challenge.telegrams.app.	120	IN	TXT	"AZZqpr3qbAUUzi5cpjGg4YR9LyUEczWB2iO-XfjAmyE"
+c2.telegrams.app.	1	IN	TXT	"v=beacon1"
+stage.telegrams.app.	1	IN	TXT	"v=delivery1"

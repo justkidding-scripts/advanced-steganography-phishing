@@ -1,0 +1,35 @@
+{
+  "name": "advanced-steganography-phishing-system",
+  "version": "1.0.0",
+  "description": "Academic research project for advanced persistent threat methodology analysis",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "wrangler deploy telegram-fingerprint-worker.js && wrangler deploy telegram-delivery-worker.js",
+    "test": "node test-extraction.js",
+    "setup": "python3 large-stego-system.py create && python3 large-stego-system.py process"
+  },
+  "keywords": [
+    "steganography",
+    "phishing", 
+    "red-team",
+    "cybersecurity",
+    "academic-research"
+  ],
+  "author": "PhD Research - Copenhagen University",
+  "license": "Academic Research Only",
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20240909.0",
+    "wrangler": "^3.57.2"
+  },
+  "devDependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikeiswrong/advanced-steganography-phishing.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "python": ">=3.8"
+  }
+}

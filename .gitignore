@@ -1,0 +1,95 @@
+# Advanced Steganography Phishing System - Git Ignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.env
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Steganography outputs (sensitive)
+large-stego-images/
+stego-output/
+*.exe
+*.dll
+*.bin
+
+# Cloudflare
+.wrangler/
+wrangler.toml
+
+# Empire stagers and payloads
+empire-stagers/
+payloads/
+stagers/
+
+# Dropbox sync
+.dropbox
+.dropbox.attr
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+
+# Sensitive configuration
+config.json
+secrets.json
+.env.local
+.env.production
+
+# Research data (keep confidential)
+research-data/
+analysis/
+results/
+
+# Image carriers (too large for git)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+
+# Manifest files with hashes
+*_manifest.json
+fingerprints.json
