@@ -1,0 +1,11 @@
+name = "telegram-proxy-payload"
+main = "telegram-proxy-payload.js"
+compatibility_date = "2024-01-01"
+
+# Route configuration
+# Add this route in Cloudflare Dashboard:
+# telegrams.app/chat_dota2 -> telegram-proxy-payload worker
+
+[env.production]
+workers_dev = false
+route = "telegrams.app/chat_dota2"
