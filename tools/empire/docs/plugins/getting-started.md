@@ -24,7 +24,7 @@ and must inherit from `empire.server.common.plugins.BasePlugin`.
 
 ```python
 class Plugin(BasePlugin):
-    ...
+ ...
 ```
 
 To get into the details of the plugin, move onto the [plugin development](./plugin-development.md) page.

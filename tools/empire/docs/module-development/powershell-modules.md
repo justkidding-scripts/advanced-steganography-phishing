@@ -1,8 +1,8 @@
 # PowerShell Modules
 
-The [powershell\_template.yaml](https://github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell\_template.py) will help guide through the fields needed for writing a simple module. Of course, not every module will fit the simplest case. There are advanced options that we will discuss below.
+The [powershell\_template.yaml](https/github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell\_template.py) will help guide through the fields needed for writing a simple module. Of course, not every module will fit the simplest case. There are advanced options that we will discuss below.
 
-The property `options` is a list of the options that can be set for the module at execution time. All modules must contain an option called **Agent**. Additional options go in the options list after the **Agent** argument. If the argument is required for execution, set `required: true`, and if a default value is warranted, set `value`. The [prompt module](https://github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/collection/prompt.yaml) has an example of this.
+The property `options` is a list of the options that can be set for the module at execution time. All modules must contain an option called **Agent**. Additional options go in the options list after the **Agent** argument. If the argument is required for execution, set `required: true`, and if a default value is warranted, set `value`. The [prompt module](https/github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/collection/prompt.yaml) has an example of this.
 
 When Empire boots up, it loads all module yamls found in the modules directory. If there are any missing fields or misconfigurations, the module won't load and a warning will print to the console.
 
@@ -12,9 +12,9 @@ When Empire boots up, it loads all module yamls found in the modules directory. 
 
 ```yaml
 script: |
-  Function Invoke-Template {
+ Function Invoke-Template {
 
-  }
+ }
 ```
 
 **script\_path:** For longer scripts, or scripts that are shared between multiple modules, it is recommended to put the text file into the `empire/server/data/module_source` directory and reference it like so:
@@ -23,7 +23,7 @@ script: |
 script_path: 'empire/server/data/module_source/credentials/Invoke-Mimikatz.ps1'
 ```
 
-The above example comes from the [logonpasswords module.](https://github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/credentials/mimikatz/logonpasswords.yaml)
+The above example comes from the [logonpasswords module.](https/github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/credentials/mimikatz/logonpasswords.yaml)
 
 **script\_end:** In most cases the `script_end` will simply be a call to to the powershell function with a mustache template variable called `$PARAMS`. `{{ PARAMS }}` is where Empire will insert the formatted options.
 
@@ -31,7 +31,7 @@ The above example comes from the [logonpasswords module.](https://github.com/BC-
 script_end: Invoke-Function {{ PARAMS }}
 ```
 
-There are functions that require the script\_end to be customized a bit further. For example: the one found in [Invoke-Kerberoast](https://github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/credentials/invoke\_kerberoast.yaml)
+There are functions that require the script\_end to be customized a bit further. For example: the one found in [Invoke-Kerberoast](https/github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/credentials/invoke\_kerberoast.yaml)
 
 ```yaml
 script_end: Invoke-Kerberoast {{ PARAMS }} | fl | {{ OUTPUT_FUNCTION }} | %{$_ + "`n"};"`nInvoke-Kerberoast completed!
@@ -45,7 +45,7 @@ script_end: Invoke-Kerberoast {{ PARAMS }} | fl | {{ OUTPUT_FUNCTION }} | %{$_ +
 
 ```yaml
 advanced:
-  custom_generate: true
+ custom_generate: true
 ```
 
 The python file should share the same name as the yaml file. For example `Invoke-Assembly.yaml` and `Invoke-Assembly.py` The generate function is a static function that gets passed 5 parameters:
@@ -62,21 +62,21 @@ The generate function **should** treat these parameters as read only, to not cau
 
 ```python
 class Module(object):
-    @staticmethod
-    def generate(
-        main_menu: MainMenu,
-        module: EmpireModule,
-        params: dict,
-        obfuscate: bool = False,
-        obfuscation_command: str = "",
-    ):
+ @staticmethod
+ def generate(
+ main_menu: MainMenu,
+ module: EmpireModule,
+ params: dict,
+ obfuscate: bool = False,
+ obfuscation_command: str = "",
+ ):
 ```
 
 Examples of modules that use this custom generate function:
 
-* [bypassuac\_eventvwr](https://github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/privesc/bypassuac\_eventvwr.py)
-* [invoke\_assembly](https://github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/code\_execution/invoke\_assembly.py)
-* [seatbelt](https://github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/situational\_awareness/host/seatbelt.py)
+* [bypassuac\_eventvwr](https/github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/privesc/bypassuac\_eventvwr.py)
+* [invoke\_assembly](https/github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/code\_execution/invoke\_assembly.py)
+* [seatbelt](https/github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/situational\_awareness/host/seatbelt.py)
 
 #### Error Handling
 
@@ -116,37 +116,37 @@ To use this decorator, the function must have a `script` kwarg and the `script_p
 @staticmethod
 @auto_get_source
 def generate(
-    main_menu: MainMenu,
-    module: EmpireModule,
-    params: dict,
-    obfuscate: bool = False,
-    obfuscation_command: str = "",
-    script: str = "",
+ main_menu: MainMenu,
+ module: EmpireModule,
+ params: dict,
+ obfuscate: bool = False,
+ obfuscation_command: str = "",
+ script: str = "",
 ):
-    # do stuff
-    ...
+ # do stuff
+ ...
 
 # The above is the equivalent of:
 @staticmethod
 def generate(
-    main_menu: MainMenu,
-    module: EmpireModule,
-    params: dict,
-    obfuscate: bool = False,
-    obfuscation_command: str = "",
+ main_menu: MainMenu,
+ module: EmpireModule,
+ params: dict,
+ obfuscate: bool = False,
+ obfuscation_command: str = "",
 ):
-    # read in the common module source code
-    script, err = main_menu.modulesv2.get_module_source(
-        module_name=module.script_path,
-        obfuscate=obfuscate,
-        obfuscate_command=obfuscation_command,
-    )
+ # read in the common module source code
+ script, err = main_menu.modulesv2.get_module_source(
+ module_name=module.script_path,
+ obfuscate=obfuscate,
+ obfuscate_command=obfuscation_command,
+ )
 
-    if err:
-        return handle_error_message(err)
+ if err:
+ return handle_error_message(err)
 
-    # do stuff
-    ...
+ # do stuff
+ ...
 ```
 
 `@auto_finalize` is a decorator that will automatically call `finalize_module` on the returned script from the decorated function.
@@ -158,35 +158,35 @@ To use this decorator, the function must not utilize the deprecated tuple return
 @staticmethod
 @auto_finalize
 def generate(
-    main_menu: MainMenu,
-    module: EmpireModule,
-    params: dict,
-    obfuscate: bool = False,
-    obfuscation_command: str = "",
+ main_menu: MainMenu,
+ module: EmpireModule,
+ params: dict,
+ obfuscate: bool = False,
+ obfuscation_command: str = "",
 ):
-    # Do stuff
+ # Do stuff
 
-    return script, script_end
+ return script, script_end
 
 # The above is the equivalent of:
 @staticmethod
 def generate(
-    main_menu: MainMenu,
-    module: EmpireModule,
-    params: dict,
-    obfuscate: bool = False,
-    obfuscation_command: str = "",
+ main_menu: MainMenu,
+ module: EmpireModule,
+ params: dict,
+ obfuscate: bool = False,
+ obfuscation_command: str = "",
 ):
-    # Do stuff
+ # Do stuff
 
-    script, script_end = main_menu.modulesv2.finalize_module(
-        script=script,
-        script_end=script_end,
-        obfuscate=obfuscate,
-        obfuscate_command=obfuscation_command,
-    )
+ script, script_end = main_menu.modulesv2.finalize_module(
+ script=script,
+ script_end=script_end,
+ obfuscate=obfuscate,
+ obfuscate_command=obfuscation_command,
+ )
 
-    return script
+ return script
 ```
 
 
@@ -197,40 +197,40 @@ def generate(
 
 **option\_format\_string\_boolean:** This tells Empire how to format boolean parameters when `True`. In most cases, the default format string will be fine: `-{{ KEY }}`.
 
-[Rubeus](https://github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/credentials/rubeus.yaml) is an example of a module that overwrites the option\_format\_string, since it only has one parameter `Command` and deviates from the default:
+[Rubeus](https/github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/credentials/rubeus.yaml) is an example of a module that overwrites the option\_format\_string, since it only has one parameter `Command` and deviates from the default:
 
 ```yaml
 options:
-  - name: Agent
-    description: Agent to run module on.
-    required: true
-    value: ''
-  - name: Command
-    description: Use available Rubeus commands as a one-liner.
-    required: false
-    value: ''
+ - name: Agent
+ description: Agent to run module on.
+ required: true
+ value: ''
+ - name: Command
+ description: Use available Rubeus commands as a one-liner.
+ required: false
+ value: ''
 script_path: 'empire/server/data/module_source/credentials/Invoke-Rubeus.ps1'
 script_end: "Invoke-Rubeus -Command \"{{ PARAMS }}\""
 advanced:
-  option_format_string: "{{ VALUE }}"
-  option_format_string_boolean: ""
+ option_format_string: "{{ VALUE }}"
+ option_format_string_boolean: ""
 ```
 
-**name\_in\_code**: There may be times when you want the display name for an option in Starkiller/CLI to be different from how it looks in the module's code. For this, you can use `name_in_code` such as in the [sharpsecdump module](https://github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/credentials/sharpsecdump.yaml)
+**name\_in\_code**: There may be times when you want the display name for an option in Starkiller/CLI to be different from how it looks in the module's code. For this, you can use `name_in_code` such as in the [sharpsecdump module](https/github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/credentials/sharpsecdump.yaml)
 
 ```yaml
-  - name: Username
-    name_in_code: u
-    description: Username to use, if you want to use alternate credentials to run. Must
-      use with -p and -d flags, Misc)
-    required: false
-    value: ''
-  - name: Password
-    name_in_code: p
-    description: Plaintext password to use, if you want to use alternate credentials
-      to run. Must use with -u and -d flags
-    required: false
-    value: ''
+ - name: Username
+ name_in_code: u
+ description: Username to use, if you want to use alternate credentials to run. Must
+ use with -p and -d flags, Misc)
+ required: false
+ value: ''
+ - name: Password
+ name_in_code: p
+ description: Plaintext password to use, if you want to use alternate credentials
+ to run. Must use with -u and -d flags
+ required: false
+ value: ''
 ```
 
 **suggested\_values**: A list of suggested values can be provided for an option. These values will be available in the CLI and Starkiller as autocomplete values.
@@ -250,5 +250,5 @@ Note: Starkiller will automatically give file options with a dropdown or upload.
 
 **OUTPUT\_FUNCTION**: Some PowerShell modules have an option named `OutputFunction` that converts the output to json, xml, etc. The `OutputFunction` option can be inserted anywher in the `script` and `script_end` by using `{{ OUTPUT_FUNCTION }}`.
 
-* An example of this in a yaml can be seen in [sherlock](https://github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/privesc/sherlock.yaml).
+* An example of this in a yaml can be seen in [sherlock](https/github.com/BC-SECURITY/Empire/blob/master/empire/server/modules/powershell/privesc/sherlock.yaml).
 * If a module uses a `custom_generate` function, it needs to perform this substitution on its own.

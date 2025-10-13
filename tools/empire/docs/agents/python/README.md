@@ -27,45 +27,45 @@ These functionalities provide:
 
 ### IronPython Dependencies
 The IronPython agent will also use custom libraries that are added to lib.zip which include:
-- [SecretSocks](https://github.com/BC-SECURITY/PySecretSOCKS)
+- [SecretSocks](https/github.com/BC-SECURITY/PySecretSOCKS)
 
 ## Staging Process
 Staging is the agent's initial phase, where it communicates with the server and prepares for secure interactions. During the staging process initial staging information is provided and used to create a secure communication channel.
 
 ```
-+------------+             +------------+             +----------------+            +------------+
-|   Client   |             |    C2      |             |    Stager      |            |   Agent    |
-+------------+             +------------+             +----------------+            +------------+
-       |                          |                          |                            |
-       |                          |                          |                            |
-       |      Request Staging     |                          |                            |
-       |------------------------->|                          |                            |
-       |                          |                          |                            |
-       |                          | Generate Staging Key     |                            |
-       |                          |   & Profile (AES/HMAC)   |                            |
-       |                          |------------------------->|                            |
-       |                          |                          |                            |
-       |   Send Staging Key &    |                          |                             |
-       |        Profile           |                          |                            |
-       |<-------------------------|                          |                            |
-       |                          |                          |                            |
-       |                          |                          |   Decrypt Staging Profile  |
-       |                          |                          |<---------------------------|
-       |                          |                          |                            |
-       |                          |                          | Generate Diffie-Hellman    |
-       |                          |                          |    (AES Session Key)       |
-       |                          |                          |<---------------------------|
-       |                          |                          |                            |
-       |                          |                          |                            |
-       |                          |                          |                            | Decrypt
-       |                          |                          |                            | Tasking
-       |                          |                          |                            | using AES
-       |                          |                          |                            | Session Key
-       |                          |                          |                            |<-------|
-       |                          |                          |                            |
-       |                          |                          |                            | Execute
-       |                          |                          |                            |  Tasks
-       |                          |                          |                            |<-------|
++------------+ +------------+ +----------------+ +------------+
+| Client | | C2 | | Stager | | Agent |
++------------+ +------------+ +----------------+ +------------+
+ | | | |
+ | | | |
+ | Request Staging | | |
+ |------------------------->| | |
+ | | | |
+ | | Generate Staging Key | |
+ | | & Profile (AES/HMAC) | |
+ | |------------------------->| |
+ | | | |
+ | Send Staging Key & | | |
+ | Profile | | |
+ |<-------------------------| | |
+ | | | |
+ | | | Decrypt Staging Profile |
+ | | |<---------------------------|
+ | | | |
+ | | | Generate Diffie-Hellman |
+ | | | (AES Session Key) |
+ | | |<---------------------------|
+ | | | |
+ | | | |
+ | | | | Decrypt
+ | | | | Tasking
+ | | | | using AES
+ | | | | Session Key
+ | | | |<-------|
+ | | | |
+ | | | | Execute
+ | | | | Tasks
+ | | | |<-------|
 ```
 
 1. Client → C2: The client requests the staging code.

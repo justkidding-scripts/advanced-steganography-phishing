@@ -1,9 +1,9 @@
 ## Sharpire - An Implimentation of the Empire Agent in C#
 
 For usage details please see the wiki:<br>
-https://github.com/0xbadjuju/Sharpire/wiki
+https/github.com/0xbadjuju/Sharpire/wiki
 
-*Note: This is still in testing. 
+*Note: This is still in testing.
 
 
 ### Author, Contributors, and License

@@ -12,7 +12,7 @@ If there is a log message that you also want sent to the server log and console,
 also log it to the module logger with `log.info()`.
 
 To use the listener logger for the `http` listener, you can use the following command:
-`self.instance_log.info()`. 
+`self.instance_log.info()`.
 
 
 ## Formatters
@@ -24,13 +24,13 @@ The expanded format is used in the server log file and can be enabled for the co
 ## Configuration
 ```yaml
 logging:
-  level: INFO
-  directory: empire/server/downloads/logs/
-  simple_console: true
+ level: INFO
+ directory: empire/server/downloads/logs/
+ simple_console: true
 debug:
-  last_task:
-    enabled: false
-    file: empire/server/data/last_task.txt
+ last_task:
+ enabled: false
+ file: empire/server/data/last_task.txt
 ```
 
 Log level for the root server log defaults to `INFO`.
@@ -47,10 +47,10 @@ instead of the extended format.
 
 ## Command Line Flags
 `--log-level <level>`
-    Sets the log level for the server.
+ Sets the log level for the server.
 
 `--debug`
-    Sets the log level for the server to `DEBUG`.
+ Sets the log level for the server to `DEBUG`.
 
 ## Development
 In Empire 5 and beyond, if you want to print something to the console, you should
@@ -62,7 +62,7 @@ If you find a print statement that should be removed: either replace it with log
 ## Possible future features (5.1 and beyond)
 
 ### JSON Logging
-Add support for logging in JSON format to make it easier to parse the logs and integrate with other tools, such as with [structlog](https://www.structlog.org/en/stable/) or [python-json-logger](https://github.com/madzak/python-json-logger).
+Add support for logging in JSON format to make it easier to parse the logs and integrate with other tools, such as with [structlog](https/www.structlog.org/en/stable/) or [python-json-logger](https/github.com/madzak/python-json-logger).
 
 ### Plugin logging
 Give each plugin their own log file. With this, we could add endpoints to pull or tail the

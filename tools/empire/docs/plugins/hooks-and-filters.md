@@ -16,10 +16,10 @@ from empire.server.core.hooks import hooks
 from empire.server.core.db import models
 
 def my_hook(db: Session, agent: models.Agent):
-    """
-    print to the console whenever an agent checks in.
-    """
-    print(f'New Agent Check in! Name: {agent.name}')
+ """
+ print to the console whenever an agent checks in.
+ """
+ print(f'New Agent Check in! Name: {agent.name}')
 
 
 hooks.register_hook(hooks.AFTER_AGENT_CHECKIN_HOOK, 'checkin_logger_hook', my_hook)
@@ -33,12 +33,12 @@ from empire.server.core.hooks import hooks
 from empire.server.core.db import models
 
 def my_filter(db: Session, task: models.AgentTask):
-    """
-    Reverses the output string of a tasking.
-    """
-    task.output = task.output[::-1]
+ """
+ Reverses the output string of a tasking.
+ """
+ task.output = task.output[::-1]
 
-    return task
+ return task
 
 
 hooks.register_filter(hooks.BEFORE_TASKING_RESULT_FILTER, 'reverse_filter', my_filter)
@@ -74,9 +74,9 @@ Empire utilizes both filters and hooks itself that can be used as a reference.
 
 * The Powershell agent was updated to return JSON for some of the base shell commands. There are filters for `ls`, `ps`, `route`, and `ifconfig` that convert the JSON response to a table before it gets stored in the database.
 * There is a hook implemented for the `ps` command that converts the results of `ps` from Powershell and Python agents into database records.
-* An example plugin that utilizes hooks is the [Twilio-Plugin](https://github.com/BC-SECURITY/Twilio-Plugin) which sends an operator a text message when an agent checks in.
+* An example plugin that utilizes hooks is the [Twilio-Plugin](https/github.com/BC-SECURITY/Twilio-Plugin) which sends an operator a text message when an agent checks in.
 
 Future enhancements:
 
-*   Since hooking the agent results events will invoke hooks on every single tasking result,
-    we'd like to implement something that is more module specific. For example, a module that needs to store credentials, such as Mimikatz, could have a `on_response` function in its `.py` file that is invoked specifically when that module returns.
+* Since hooking the agent results events will invoke hooks on every single tasking result,
+ we'd like to implement something that is more module specific. For example, a module that needs to store credentials, such as Mimikatz, could have a `on_response` function in its `.py` file that is invoked specifically when that module returns.

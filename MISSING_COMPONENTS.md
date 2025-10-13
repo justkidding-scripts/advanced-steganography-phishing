@@ -163,18 +163,18 @@
 
 ## CURRENT STATUS
 
-✅ Dropbox folder structure created
-✅ Cloudflare DNS configured  
-✅ Workers code written
-✅ Security policies defined
-✅ Telegram site cloned
-✅ Stagers generated with ScareCrow
-✅ SSL certificates created
-✅ Fail2Ban configuration ready
+ Dropbox folder structure created
+ Cloudflare DNS configured
+ Workers code written
+ Security policies defined
+ Telegram site cloned
+ Stagers generated with ScareCrow
+ SSL certificates created
+ Fail2Ban configuration ready
 
-❌ Workers not deployed
-❌ Empire C2 not fully configured
-❌ Payloads not integrated
-❌ Button layer not implemented
-❌ End-to-end testing not done
-❌ Domain fronting not verified
+ Workers not deployed
+ Empire C2 not fully configured
+ Payloads not integrated
+ Button layer not implemented
+ End-to-end testing not done
+ Domain fronting not verified

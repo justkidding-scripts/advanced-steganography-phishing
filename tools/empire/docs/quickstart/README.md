@@ -24,7 +24,7 @@ Empire uses a server/client architecture which requires running each in separate
 ./ps-empire client -h
 ```
 
-Both the client and server  can be reset by passing a `--reset` flag. This will delete the database and any files that were created at runtime. It is recommended to run a `--reset` after any upgrades.\
+Both the client and server can be reset by passing a `--reset` flag. This will delete the database and any files that were created at runtime. It is recommended to run a `--reset` after any upgrades.\
 
 
 ```
@@ -36,7 +36,7 @@ Both the client and server  can be reset by passing a `--reset` flag. This will 
 
 Once you hit the main menu, you'll see the number of active agents, listeners, and loaded modules.
 
-![](<../.gitbook/assets/image (8).png>)
+![](<../.gitbook/assets/image (.png>)
 
 The **help** command should work for all menus, and almost everything that can be tab-completable is (menu commands, agent names, local file paths where relevant, etc.).
 
@@ -48,7 +48,7 @@ The first thing you need to do is set up a local listener. The **listeners** com
 
 ![](<../.gitbook/assets/image (7).png>)
 
-The info command will display the currently configured listener options. Set your host/port by doing something like set Host [http://192.168.52.142:8081](http://192.168.52.142:8081). This is tab-completable, and you can also use domain names here). The port will automatically be pulled out, and the backend will detect if you're doing a HTTP or HTTPS listener. For HTTPS listeners, you must first set the CertPath to be a local .pem file. The provided **./setup/cert.sh** script will generate a self-signed cert and place it in **./data/empire.pem**.
+The info command will display the currently configured listener options. Set your host/port by doing something like set Host [http/192.168.52.142:8081](http/192.168.52.142:8081). This is tab-completable, and you can also use domain names here). The port will automatically be pulled out, and the backend will detect if you're doing a HTTP or HTTPS listener. For HTTPS listeners, you must first set the CertPath to be a local .pem file. The provided **./setup/cert.sh** script will generate a self-signed cert and place it in **./data/empire.pem**.
 
 Set optional and WorkingHours, KillDate, DefaultDelay, and DefaultJitter for the listener, as well as whatever name you want it to be referred to as. You can then type **execute** to start the listener. If the name is already taken, a nameX variant will be used, and Empire will alert you if the port is already in use.
 

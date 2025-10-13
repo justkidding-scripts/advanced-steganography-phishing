@@ -35,7 +35,7 @@ sudo powershell-empire server
 # Create in appropriate category folder
 # Example for collection module:
 vim /home/kali/empire-custom-modules/collection/my_module.yaml
-vim /home/kali/empire-custom-modules/collection/my_module.py  # Optional
+vim /home/kali/empire-custom-modules/collection/my_module.py # Optional
 ```
 
 ### Step 2: Test Module Syntax
@@ -63,7 +63,7 @@ sudo pkill -f empire && sudo powershell-empire server
 
 ## Module Categories Available
 - **collection**: Data gathering
-- **privesc**: Privilege escalation  
+- **privesc**: Privilege escalation
 - **persistence**: Maintaining access
 - **lateral_movement**: Network propagation
 - **situational_awareness**: Reconnaissance
@@ -73,10 +73,10 @@ sudo pkill -f empire && sudo powershell-empire server
 ## Common Module Parameters
 ```yaml
 options:
-  - name: Agent          # Required for all modules
-  - name: target_path    # File/directory targets
-  - name: command        # Commands to execute
-  - name: output_format  # json, csv, raw
-  - name: timeout        # Execution timeout
-  - name: stealth_mode   # OPSEC considerations
+ - name: Agent # Required for all modules
+ - name: target_path # File/directory targets
+ - name: command # Commands to execute
+ - name: output_format # json, csv, raw
+ - name: timeout # Execution timeout
+ - name: stealth_mode # OPSEC considerations
 ```

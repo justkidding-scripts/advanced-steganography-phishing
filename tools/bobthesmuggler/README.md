@@ -1,10 +1,10 @@
 <div align="center">
 
-  ![GitHub License](https://img.shields.io/github/license/TheCyb3rAlpha/BobTheSmuggler?color=yellow)
-  ![GitHub repo size](https://img.shields.io/github/repo-size/TheCyb3rAlpha/BobTheSmuggler?color=green)
-  [![Twitter Follow](https://img.shields.io/twitter/follow/TheCyb3rAlpha.svg?style=social)](https://twitter.com/TheCyb3rAlpha)
-  [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=TheCyb3rAlpha.BobTheSmuggler)](https://github.com/TheCyb3rAlpha/BobTheSmuggler)
-  ![GitHub Stars](https://img.shields.io/github/stars/TheCyb3rAlpha/BobTheSmuggler)
+ ![GitHub License](https/img.shields.io/github/license/TheCyb3rAlpha/BobTheSmuggler?color=yellow)
+ ![GitHub repo size](https/img.shields.io/github/repo-size/TheCyb3rAlpha/BobTheSmuggler?color=green)
+ [![Twitter Follow](https/img.shields.io/twitter/follow/TheCyb3rAlpha.svg?style=social)](https/twitter.com/TheCyb3rAlpha)
+ [![Visitors](https/visitor-badge.laobi.icu/badge?page_id=TheCyb3rAlpha.BobTheSmuggler)](https/github.com/TheCyb3rAlpha/BobTheSmuggler)
+ ![GitHub Stars](https/img.shields.io/github/stars/TheCyb3rAlpha/BobTheSmuggler)
 
 
 
@@ -19,11 +19,11 @@ _Jan 15th, 2024 - **Support for multi-file compression has been added**. If you 
 
 ## Project Description
 
-Check out my blog to get a thorough understanding of how to use this tool: [BobTheSmuggler: Your Covert Cyber Swiss Knife for Undetectable Payload Delivery](https://medium.com/@TheCyb3rAlpha/bobthesmuggler-your-covert-cyber-swiss-knife-for-undetectable-payload-delivery-bc84f3037522).
+Check out my blog to get a thorough understanding of how to use this tool: [BobTheSmuggler: Your Covert Cyber Swiss Knife for Undetectable Payload Delivery](https/medium.com/@TheCyb3rAlpha/bobthesmuggler-your-covert-cyber-swiss-knife-for-undetectable-payload-delivery-bc84f3037522).
 
 **"Bob the Smuggler"** is a tool that leverages HTML Smuggling Attack and allows you to create HTML files with embedded 7z/zip archives. The tool would compress your binary (EXE/DLL) into 7z/zip file format, then XOR encrypt the archive and then hides inside PNG/GIF image file format (Image Polyglots). The JavaScript embedded within the HTML will download the PNG/GIF file and store it in the cache. Following this, the JavaScript will extract the data embedded in the PNG/GIF, assemble it, perform XOR decryption, and then store it as an in-memory blob.
 
-![](https://www.plantuml.com/plantuml/dpng/bP7BRzf04CRl_YkcbygSE5O2LQKonhIYJSGZoe7BuXt3IlkmPjSGyzTdRCSAIW0f5qlU-RxVFBw93u92PNJqBHpG81WHa9I8slSe6YqnHtL4I5ymhuBOQOIPua-SFgV3wM8n6BCeSQOaz1w-GsfpgilGYhOs_d4UdbK99nKEK0hlJuvaOr45n2rdveXRmazu_9yDW6Um4DVe1n70A3Kxb3qHPTTOsKRAw8rNTW-hW7jXtPv4UQYPZDhZPtZsPtQNoFKl4bTFsLqYrplhH-Dy_My1Zk21TwNRYAaYp8EkcTLQjfOzSs6bnixwHlJSnKfLS0ePMYGH4FwAerZbf3Y6nCac1jPoWe547fIp7DDlxz7iTDrdaLG-EDCDjqPJweQpyIX_NGtbiWKFUCtTRs_TJTiK2r7fqFg6VB0BRxzJGiZ_V18hzBkkkT2Ogyr3Twub2bb3uOYXMXsHQgxpK6KqOLHbz2i0)
+![](https/www.plantuml.com/plantuml/dpng/bP7BRzf04CRl_YkcbygSE5O2LQKonhIYJSGZoe7BuXt3IlkmPjSGyzTdRCSAIW0f5qlU-RxVFBw93u92PNJqBHpG81WHa9I8slSe6YqnHtL4I5ymhuBOQOIPua-SFgV3wM8n6BCeSQOaz1w-GsfpgilGYhOs_d4UdbK99nKEK0hlJuvaOr45n2rdveXRmazu_9yDW6Um4DVe1n70A3Kxb3qHPTTOsKRAw8rNTW-hW7jXtPv4UQYPZDhZPtZsPtQNoFKl4bTFsLqYrplhH-Dy_My1Zk21TwNRYAaYp8EkcTLQjfOzSs6bnixwHlJSnKfLS0ePMYGH4FwAerZbf3Y6nCac1jPoWe547fIp7DDlxz7iTDrdaLG-EDCDjqPJweQpyIX_NGtbiWKFUCtTRs_TJTiK2r7fqFg6VB0BRxzJGiZ_V18hzBkkkT2Ogyr3Twub2bb3uOYXMXsHQgxpK6KqOLHbz2i0)
 
 
 This tool currently support the following payload Delivery Chains:
@@ -49,14 +49,14 @@ Before running the tool, you need the following pre-requisites:
 pip install python-magic py7zr pyminizip
 ```
 
-**Note:** To install python-magic, you would need to install the libmagic library on your system. Follow this URL to install the libmagic library: https://pypi.org/project/python-magic/
+**Note:** To install python-magic, you would need to install the libmagic library on your system. Follow this URL to install the libmagic library: https/pypi.org/project/python-magic/
 
 ## Installation
 
 Once the required libraries are installed, you can proceed with the installation of the tool using the following commands:
 
 ```
-git clone https://github.com/TheCyb3rAlpha/BobTheSmuggler.git
+git clone https/github.com/TheCyb3rAlpha/BobTheSmuggler.git
 cd BobTheSmuggler
 ```
 
@@ -71,18 +71,18 @@ python3 BobTheSmuggler.py -h
 
 ```
 ======================================================================
-██████╗  ██████╗ ██████╗     ████████╗██╗  ██╗███████╗
-██╔══██╗██╔═══██╗██╔══██╗    ╚══██╔══╝██║  ██║██╔════╝
-██████╔╝██║   ██║██████╔╝       ██║   ███████║█████╗
-██╔══██╗██║   ██║██╔══██╗       ██║   ██╔══██║██╔══╝
-██████╔╝╚██████╔╝██████╔╝       ██║   ██║  ██║███████╗
-╚═════╝  ╚═════╝ ╚═════╝        ╚═╝   ╚═╝  ╚═╝╚══════╝
-███████╗███╗   ███╗██╗   ██╗ ██████╗  ██████╗ ██╗     ███████╗██████╗
-██╔════╝████╗ ████║██║   ██║██╔════╝ ██╔════╝ ██║     ██╔════╝██╔══██╗
-███████╗██╔████╔██║██║   ██║██║  ███╗██║  ███╗██║     █████╗  ██████╔╝
-╚════██║██║╚██╔╝██║██║   ██║██║   ██║██║   ██║██║     ██╔══╝  ██╔══██╗
-███████║██║ ╚═╝ ██║╚██████╔╝╚██████╔╝╚██████╔╝███████╗███████╗██║  ██║
-╚══════╝╚═╝     ╚═╝ ╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝
+██████╗ ██████╗ ██████╗ ████████╗██╗ ██╗███████╗
+██╔══██╗██╔═══██╗██╔══██╗ ╚══██╔══╝██║ ██║██╔════╝
+██████╔╝██║ ██║██████╔╝ ██║ ███████║█████╗
+██╔══██╗██║ ██║██╔══██╗ ██║ ██╔══██║██╔══╝
+██████╔╝╚██████╔╝██████╔╝ ██║ ██║ ██║███████╗
+╚═════╝ ╚═════╝ ╚═════╝ ╚═╝ ╚═╝ ╚═╝╚══════╝
+███████╗███╗ ███╗██╗ ██╗ ██████╗ ██████╗ ██╗ ███████╗██████╗
+██╔════╝████╗ ████║██║ ██║██╔════╝ ██╔════╝ ██║ ██╔════╝██╔══██╗
+███████╗██╔████╔██║██║ ██║██║ ███╗██║ ███╗██║ █████╗ ██████╔╝
+╚════██║██║╚██╔╝██║██║ ██║██║ ██║██║ ██║██║ ██╔══╝ ██╔══██╗
+███████║██║ ╚═╝ ██║╚██████╔╝╚██████╔╝╚██████╔╝███████╗███████╗██║ ██║
+╚══════╝╚═╝ ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝╚══════╝╚═╝ ╚═╝
 ======================================================================
 
 usage: BobTheSmuggler.py [-h] -i EXE_FILE [-p PASSWORD] -f OUTPUT_HTML -o OUTPUT_FILENAME -t {html,svg,png,gif} [-c {7z,zip}] [-u PNG_URL] [-png PNG_FILE] [-gif GIF_FILE] [-e CUSTOM_FILE] [-v]
@@ -90,18 +90,18 @@ usage: BobTheSmuggler.py [-h] -i EXE_FILE [-p PASSWORD] -f OUTPUT_HTML -o OUTPUT
 Hides EXE/DLL file inside an HTML/SVG file.
 
 optional arguments:
-  -h, --help            show this help message and exit
-  -i EXE_FILE           Path to the EXE/DLL file.
-  -p PASSWORD           Password for compression.
-  -f OUTPUT_HTML        HTML Smuggled file (.html)
-  -o OUTPUT_FILENAME    Downloaded file name (Your payload is in this file.)
-  -t {html,svg,png,gif} Type of embedded template.
-  -c {7z,zip}           Compression format: 7z or zip (default: zip)
-  -u PNG_URL            URL for the embedded PNG image.
-  -png PNG_FILE         Path to the PNG file for embedding EXE/DLL.
-  -gif GIF_FILE         Path to the GIF file for embedding EXE/DLL.
-  -e CUSTOM_FILE        HTML file to clone as template.
-  -v, --verbose         Enable verbose logging.
+ -h, --help show this help message and exit
+ -i EXE_FILE Path to the EXE/DLL file.
+ -p PASSWORD Password for compression.
+ -f OUTPUT_HTML HTML Smuggled file (.html)
+ -o OUTPUT_FILENAME Downloaded file name (Your payload is in this file.)
+ -t {html,svg,png,gif} Type of embedded template.
+ -c {7z,zip} Compression format: 7z or zip (default: zip)
+ -u PNG_URL URL for the embedded PNG image.
+ -png PNG_FILE Path to the PNG file for embedding EXE/DLL.
+ -gif GIF_FILE Path to the GIF file for embedding EXE/DLL.
+ -e CUSTOM_FILE HTML file to clone as template.
+ -v, --verbose Enable verbose logging.
 ```
 
 ## Examples
