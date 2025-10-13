@@ -38,6 +38,6 @@ The main loop of the agent, which continually checks in with the server for new 
 To use the `MainAgent` class, it's typically instantiated within the `Stage` class after the initial staging process:
 
 ```python
-agent = MainAgent(packet_handler=packetHandlerInstance, profile=profile, server=server, session_id=session_id, kill_date=kill_date, working_hours=working_hours)
+agent = MainAgent(packet_handleracketHandlerInstance, profilerofile, server=server, session_id=session_id, kill_date=kill_date, working_hours=working_hours)
 agent.run()
 ```

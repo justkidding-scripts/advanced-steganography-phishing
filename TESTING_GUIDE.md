@@ -1,6 +1,6 @@
-# 🔬 Testing Guide: AV Evasion & Phishing Detection
+# Testing Guide: AV Evasion & Phishing Detection
 
-## 🎯 Overview
+## Overview
 
 This guide covers **precise measurement** of:
 1. **AV/EDR Detection** - Testing payload against security solutions
@@ -8,7 +8,7 @@ This guide covers **precise measurement** of:
 
 ---
 
-## 🛡️ AV/EDR EVASION TESTING
+## ️ AV/EDR EVASION TESTING
 
 ### Tools Required
 
@@ -18,7 +18,7 @@ Identifies which specific bytes in your payload trigger AV signatures.
 ```bash
 # Install
 cd /home/kali/tools
-git clone https://github.com/rasta-mouse/ThreatCheck.git
+git clone https/github.com/rasta-mouse/ThreatCheck.git
 cd ThreatCheck
 dotnet build
 
@@ -33,7 +33,7 @@ Specifically tests against Windows Defender.
 
 ```bash
 # Install (Windows VM)
-git clone https://github.com/matterpreter/DefenderCheck.git
+git clone https/github.com/matterpreter/DefenderCheck.git
 cd DefenderCheck
 # Build in Visual Studio or use pre-compiled binary
 
@@ -47,7 +47,7 @@ Finds AMSI (Anti-Malware Scan Interface) signatures in scripts.
 ```bash
 # Install
 cd /home/kali/tools
-git clone https://github.com/RythmStick/AMSITrigger.git
+git clone https/github.com/RythmStick/AMSITrigger.git
 
 # Test PowerShell script
 AMSITrigger.exe -i stagers\empire_ps_stager.ps1 -f 3
@@ -64,7 +64,7 @@ AMSITrigger.exe -i stagers\empire_ps_stager.ps1 -f 3
 
 ---
 
-## 🧪 TESTING METHODOLOGY
+## TESTING METHODOLOGY
 
 ### Phase 1: Static Detection Test
 
@@ -81,7 +81,7 @@ Set-MpPreference -SubmitSamplesConsent NeverSend
 2. Run full scan: `Start-MpScan -ScanType FullScan`
 3. Check detection: `Get-MpThreatDetection`
 
-**Expected Result**: No detection with ScareCrow obfuscation ✓
+**Expected Result**: No detection with ScareCrow obfuscation
 
 ### Phase 2: Dynamic/Behavioral Detection
 
@@ -122,7 +122,7 @@ ip.addr == 161.35.155.3
 
 ---
 
-## 🌐 BROWSER/PHISHING DETECTION TESTING
+## BROWSER/PHISHING DETECTION TESTING
 
 ### Tools Required
 
@@ -130,34 +130,34 @@ ip.addr == 161.35.155.3
 
 ```bash
 # Check URL reputation
-curl "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "client": {
-      "clientId": "test",
-      "clientVersion": "1.0"
-    },
-    "threatInfo": {
-      "threatTypes": ["MALWARE", "SOCIAL_ENGINEERING"],
-      "platformTypes": ["ANY_PLATFORM"],
-      "threatEntryTypes": ["URL"],
-      "threatEntries": [
-        {"url": "https://161-35-155-3.sslip.io"}
-      ]
-    }
-  }'
+curl "https/safebrowsing.googleapis.com/v4/threatMatches:find?key=YOUR_API_KEY" \
+ -H "Content-Type: application/json" \
+ -d '{
+ "client": {
+ "clientId": "test",
+ "clientVersion": "1.0"
+ },
+ "threatInfo": {
+ "threatTypes": ["MALWARE", "SOCIAL_ENGINEERING"],
+ "platformTypes": ["ANY_PLATFORM"],
+ "threatEntryTypes": ["URL"],
+ "threatEntries": [
+ {"url": "https/161-35-155-3.sslip.io"}
+ ]
+ }
+ }'
 ```
 
-**Get API Key**: https://developers.google.com/safe-browsing/v4/get-started
+**Get API Key**: https/developers.google.com/safe-browsing/v4/get-started
 
 #### 2. urlscan.io
 
 ```bash
 # Submit URL for scanning
-curl -X POST "https://urlscan.io/api/v1/scan/" \
-  -H "API-Key: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"url": "https://161-35-155-3.sslip.io", "visibility": "private"}'
+curl -X POST "https/urlscan.io/api/v1/scan/" \
+ -H "API-Key: YOUR_API_KEY" \
+ -H "Content-Type: application/json" \
+ -d '{"url": "https/161-35-155-3.sslip.io", "visibility": "private"}'
 ```
 
 **Important**: Use `"visibility": "private"` to avoid public listing!
@@ -166,17 +166,17 @@ curl -X POST "https://urlscan.io/api/v1/scan/" \
 
 ```bash
 # Check if domain is in PhishTank database
-curl "http://checkurl.phishtank.com/checkurl/" \
-  --data "url=https://161-35-155-3.sslip.io&format=json&app_key=YOUR_KEY"
+curl "http/checkurl.phishtank.com/checkurl/" \
+ --data "url=https/161-35-155-3.sslip.io&format=json&app_key=YOUR_KEY"
 ```
 
 #### 4. VirusTotal URL Scanner
 
 ```bash
 # Check URL reputation (NOT the file!)
-curl "https://www.virustotal.com/api/v3/urls" \
-  -H "x-apikey: YOUR_API_KEY" \
-  -F "url=https://161-35-155-3.sslip.io"
+curl "https/www.virustotal.com/api/v3/urls" \
+ -H "x-apikey: YOUR_API_KEY" \
+ -F "url=https/161-35-155-3.sslip.io"
 ```
 
 **Safe for URLs**: Only checking reputation, not uploading payload
@@ -186,24 +186,24 @@ curl "https://www.virustotal.com/api/v3/urls" \
 **Manual Testing:**
 ```
 1. Open phishing site in:
-   - Chrome (with Safe Browsing)
-   - Firefox (with Google Safe Browsing)
-   - Edge (with SmartScreen)
-   
+ - Chrome (with Safe Browsing)
+ - Firefox (with Google Safe Browsing)
+ - Edge (with SmartScreen)
+
 2. Check for warnings:
-   - "Deceptive site ahead"
-   - "Phishing site blocked"
-   - SSL certificate warnings
-   
+ - "Deceptive site ahead"
+ - "Phishing site blocked"
+ - SSL certificate warnings
+
 3. Monitor Console (F12):
-   - Mixed content warnings
-   - CORS errors
-   - CSP violations
+ - Mixed content warnings
+ - CORS errors
+ - CSP violations
 ```
 
 ---
 
-## 📊 TESTING MATRIX
+## TESTING MATRIX
 
 ### AV/EDR Products to Test
 
@@ -228,53 +228,53 @@ curl "https://www.virustotal.com/api/v3/urls" \
 
 ---
 
-## 🔍 METRICS TO COLLECT
+## METRICS TO COLLECT
 
 ### AV Evasion Metrics
 
 ```yaml
 Payload Statistics:
-  - File size: 2.4 MB
-  - Entropy: [Calculate with sigcheck.exe]
-  - PE characteristics: [Check with PEview]
-  - Code signing: Fake Microsoft cert
-  
+ - File size: 2.4 MB
+ - Entropy: [Calculate with sigcheck.exe]
+ - PE characteristics: [Check with PEview]
+ - Code signing: Fake Microsoft cert
+
 Detection Results:
-  - Static scan: Detected/Not Detected
-  - Dynamic analysis: Triggered/Not Triggered
-  - Memory scan: Detected/Not Detected
-  - Network behavior: Flagged/Clean
-  
+ - Static scan: Detected/Not Detected
+ - Dynamic analysis: Triggered/Not Triggered
+ - Memory scan: Detected/Not Detected
+ - Network behavior: Flagged/Clean
+
 Time to Detection:
-  - Initial execution: [timestamp]
-  - First network beacon: [timestamp]
-  - If detected: [timestamp]
+ - Initial execution: [timestamp]
+ - First network beacon: [timestamp]
+ - If detected: [timestamp]
 ```
 
 ### Phishing Detection Metrics
 
 ```yaml
 URL Reputation:
-  - Google Safe Browsing: Clean/Flagged
-  - urlscan.io score: [0-100]
-  - VirusTotal detections: X/90
-  - PhishTank: Listed/Not Listed
-  
+ - Google Safe Browsing: Clean/Flagged
+ - urlscan.io score: [0-100]
+ - VirusTotal detections: X/90
+ - PhishTank: Listed/Not Listed
+
 Browser Behavior:
-  - Chrome warning: Yes/No
-  - Firefox warning: Yes/No
-  - Edge SmartScreen: Yes/No
-  - Certificate validation: Pass/Fail
-  
+ - Chrome warning: Yes/No
+ - Firefox warning: Yes/No
+ - Edge SmartScreen: Yes/No
+ - Certificate validation: Pass/Fail
+
 Detection Timeline:
-  - Initial deployment: [date]
-  - First flagged: [date]
-  - Flagged by: [service name]
+ - Initial deployment: [date]
+ - First flagged: [date]
+ - Flagged by: [service name]
 ```
 
 ---
 
-## 🧪 TESTING PROCEDURE
+## TESTING PROCEDURE
 
 ### Step 1: Baseline Testing (Day 0)
 
@@ -317,7 +317,7 @@ Detection Timeline:
 
 ---
 
-## 📈 REPORTING TEMPLATE
+## REPORTING TEMPLATE
 
 ```markdown
 ## Test Results - [Date]
@@ -332,7 +332,7 @@ Detection Timeline:
 ### AV Detection Results
 | Product | Version | Static Scan | Dynamic | Detection Method |
 |---------|---------|-------------|---------|------------------|
-| Defender | Current | ✓ Clean | ✓ Clean | N/A |
+| Defender | Current | Clean | Clean | N/A |
 | [Product] | X.X | [Result] | [Result] | [Method] |
 
 ### Phishing Detection Results
@@ -362,25 +362,25 @@ Detection Timeline:
 
 ---
 
-## ⚠️ OPSEC WARNINGS
+## ️ OPSEC WARNINGS
 
 ### DO NOT:
-- ❌ Upload payloads to VirusTotal
-- ❌ Use public URL scanners for sensitive domains
-- ❌ Test on production systems
-- ❌ Leave artifacts on test systems
-- ❌ Use your personal Google account for testing
+- Upload payloads to VirusTotal
+- Use public URL scanners for sensitive domains
+- Test on production systems
+- Leave artifacts on test systems
+- Use your personal Google account for testing
 
 ### DO:
-- ✅ Use isolated test environments
-- ✅ Use burner accounts for API testing
-- ✅ Clean up test artifacts
-- ✅ Use VPN/Tor for public checks
-- ✅ Document everything for research
+- Use isolated test environments
+- Use burner accounts for API testing
+- Clean up test artifacts
+- Use VPN/Tor for public checks
+- Document everything for research
 
 ---
 
-## 🛠️ AUTOMATED TESTING SCRIPT
+## ️ AUTOMATED TESTING SCRIPT
 
 ```bash
 #!/bin/bash
@@ -392,7 +392,7 @@ VM_NAME="Windows10-Test"
 echo "[+] Starting AV evasion test..."
 
 # 1. Copy payload to VM
-scp "$PAYLOAD" user@vm:/tmp/test.exe
+scp "$PAYLOAD" user@vmtmp/test.exe
 
 # 2. Execute and monitor
 ssh user@vm "powershell.exe -Command 'Start-Process C:\\tmp\\test.exe'"
@@ -409,12 +409,12 @@ echo "[+] Test complete. Check detection_results.txt"
 
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
-- **MITRE ATT&CK**: https://attack.mitre.org/
-- **ScareCrow Documentation**: https://github.com/optiv/ScareCrow
-- **ThreatCheck**: https://github.com/rasta-mouse/ThreatCheck
-- **AMSI Bypass Techniques**: https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell
+- **MITRE ATT&CK**: https/attack.mitre.org/
+- **ScareCrow Documentation**: https/github.com/optiv/ScareCrow
+- **ThreatCheck**: https/github.com/rasta-mouse/ThreatCheck
+- **AMSI Bypass Techniques**: https/github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell
 
 ---
 

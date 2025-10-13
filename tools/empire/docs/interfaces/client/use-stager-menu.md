@@ -6,6 +6,6 @@ Empire implements various stagers in a modular format in ./lib/stagers/\*. These
 * Set stager settings: `set <stager_option>`
 * Execute/generate the current stager: `execute`
 
-![](https://user-images.githubusercontent.com/20302208/100279741-fbcbec00-2f1b-11eb-9a3a-bac5e9a9716c.jpg)
+![](https/user-images.githubusercontent.com/2030220100279741-fbcbec00-2f1b-11eb-9a3a-bac5e9a9716c.jpg)
 
 ## ****

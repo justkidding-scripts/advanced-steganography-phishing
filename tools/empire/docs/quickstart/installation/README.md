@@ -1,6 +1,6 @@
 # Installation
 
-We recommend the use of [Kali](https://www.kali.org/downloads/), [Poetry](https://python-poetry.org/docs/), or our [Docker images](https://hub.docker.com/r/bcsecurity/empire) to run Empire. Kali Linux users and [Direct Sponsors](https://github.com/sponsors/BC-SECURITY) will receive 30-day early access to new Empire and Starkiller features.
+We recommend the use of [Kali](https/www.kali.org/downloads/), [Poetry](https/python-poetry.org/docs/), or our [Docker images](https/hub.docker.com/r/bcsecurity/empire) to run Empire. Kali Linux users and [Direct Sponsors](https/github.com/sponsors/BC-SECURITY) will receive 30-day early access to new Empire and Starkiller features.
 
 The following operating systems have been tested for Empire compatibility. We will be unable to provide support for other OSs at this time. Consider using our Prebuilt Docker containers which can run on any system.
 
@@ -16,7 +16,7 @@ As of Empire 5.8, Python 3.10 is the minimum Python version required.
 Note: The `main` branch is a reflection of the latest changes and may not always be stable. After cloning the repo, you can checkout the latest stable release by running the `setup/checkout-latest-tag.sh` script.
 
 ```bash
-git clone --recursive https://github.com/BC-SECURITY/Empire.git
+git clone --recursive https/github.com/BC-SECURITY/Empire.git
 cd Empire
 ./setup/checkout-latest-tag.sh
 ./setup/install.sh
@@ -25,14 +25,14 @@ cd Empire
 **Sponsors:**
 
 ```
-git clone --recursive https://github.com/BC-SECURITY/Empire-Sponsors.git
+git clone --recursive https/github.com/BC-SECURITY/Empire-Sponsors.git
 cd Empire-Sponsors
 ./setup/checkout-latest-tag.sh sponsors
 ./setup/install.sh
 ```
 
 If you are using the sponsors version of Empire, it will pull the sponsors version of Starkiller.
-Because these are private repositories, you need to have ssh credentials configured for GitHub. Instructions can be found [here](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh).
+Because these are private repositories, you need to have ssh credentials configured for GitHub. Instructions can be found [here](https/docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh).
 
 ## Kali
 
@@ -73,9 +73,9 @@ docker run -it -p 1337:1337 -p 5000:5000 --volumes-from data bcsecurity/empire:l
 docker run -it -p 1337:1337 -p 5000:5000 --volumes-from data --entrypoint /bin/bash bcsecurity/empire:latest
 ```
 
-Note: These are example basic commands to get started with docker. Depending on the use case of the individual, one may need to reference the [Docker documentation](https://docs.docker.com).
+Note: These are example basic commands to get started with docker. Depending on the use case of the individual, one may need to reference the [Docker documentation](https/docs.docker.com).
 
-All image versions can be found at: [https://hub.docker.com/r/bcsecurity/empire/](https://hub.docker.com/r/bcsecurity/empire/)
+All image versions can be found at: [https/hub.docker.com/r/bcsecurity/empire/](https/hub.docker.com/r/bcsecurity/empire/)
 
 * The last commit from master will be deployed to the `latest` tag
 * The last commit from the dev branch will be deployed to the `dev` tag

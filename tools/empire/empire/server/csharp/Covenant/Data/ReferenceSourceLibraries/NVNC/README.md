@@ -1,4 +1,4 @@
-# NVNC [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+# NVNC [![No Maintenance Intended](http/unmaintained.tech/badge.svg)](http/unmaintained.tech/)
 
 The first open-source .NET VNC Server written entirely in the C# programming language.
 
@@ -15,10 +15,10 @@ This project is **not** production ready and should serve as an PoC implementati
 - Built for both x86 and x64 architectures
 - Supports Windows, Linux and macOS via the Mono Framework
 - Tested and compatible with the following viewers:
-  - TightVNC Viewer 2.8.27
-  - TightVNC Java Viewer 2.8.3
-  - UltraVNC 1.2.4.0
-  - **NOT** compatible with RealVNC 6+
+ - TightVNC Viewer 2.8.27
+ - TightVNC Java Viewer 2.8.3
+ - UltraVNC 1.2.4.0
+ - **NOT** compatible with RealVNC 6+
 
 Incomplete and experimental repeater support can be found on the branch `experimental-repeater-support`
 

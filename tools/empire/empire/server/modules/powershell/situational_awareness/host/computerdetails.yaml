@@ -1,13 +1,13 @@
 name: Get-ComputerDetails
 authors:
-  - name: Joseph Bialek
-    handle: '@JosephBialek'
-    link: https://twitter.com/JosephBialek
+ - name: Joseph Bialek
+ handle: '@JosephBialek'
+ link: https/twitter.com/JosephBialek
 description: Enumerates useful information on the system. By default, all checks are run.
 software: ''
 tactics: []
 techniques:
-  - T1082
+ - T1082
 background: true
 output_extension:
 needs_admin: true
@@ -15,47 +15,47 @@ opsec_safe: true
 language: powershell
 min_language_version: '2'
 comments:
-  - https://github.com/mattifestation/PowerSploit/blob/master/Recon/Get-ComputerDetails.ps1
+ - https/github.com/mattifestation/PowerSploit/blob/master/Recon/Get-ComputerDetails.ps1
 options:
-  - name: Agent
-    description: Agent to run module on.
-    required: true
-    value: ''
-  - name: Limit
-    description: Limit the number of event log entries returned. Defaults to 100
-    required: false
-    value: '100'
-  - name: '4648'
-    description: Switch. Only return 4648 logon information (RDP to another machine).
-    required: false
-    value: ''
-  - name: '4624'
-    description: Switch. Only return 4624 logon information (logons to this machine).
-    required: false
-    value: ''
-  - name: AppLocker
-    description: Switch. Only return AppLocker logs.
-    required: false
-    value: ''
-  - name: PSScripts
-    description: Switch. Only return PowerShell scripts run from operational log.
-    required: false
-    value: ''
-  - name: SavedRDP
-    description: Switch. Only return saved RDP connections.
-    required: false
-    value: ''
-  - name: OutputFunction
-    description: PowerShell's output function to use ("Out-String", "ConvertTo-Json", "ConvertTo-Csv", "ConvertTo-Html", "ConvertTo-Xml").
-    required: false
-    value: Out-String
-    strict: false
-    suggested_values:
-      - Out-String
-      - ConvertTo-Json
-      - ConvertTo-Csv
-      - ConvertTo-Html
-      - ConvertTo-Xml
+ - name: Agent
+ description: Agent to run module on.
+ required: true
+ value: ''
+ - name: Limit
+ description: Limit the number of event log entries returned. Defaults to 100
+ required: false
+ value: '100'
+ - name: '4648'
+ description: Switch. Only return 4648 logon information (RDP to another machine).
+ required: false
+ value: ''
+ - name: '4624'
+ description: Switch. Only return 4624 logon information (logons to this machine).
+ required: false
+ value: ''
+ - name: AppLocker
+ description: Switch. Only return AppLocker logs.
+ required: false
+ value: ''
+ - name: PSScripts
+ description: Switch. Only return PowerShell scripts run from operational log.
+ required: false
+ value: ''
+ - name: SavedRDP
+ description: Switch. Only return saved RDP connections.
+ required: false
+ value: ''
+ - name: OutputFunction
+ description: PowerShell's output function to use ("Out-String", "ConvertTo-Json", "ConvertTo-Csv", "ConvertTo-Html", "ConvertTo-Xml").
+ required: false
+ value: Out-String
+ strict: false
+ suggested_values:
+ - Out-String
+ - ConvertTo-Json
+ - ConvertTo-Csv
+ - ConvertTo-Html
+ - ConvertTo-Xml
 script_path: situational_awareness/host/Get-ComputerDetails.ps1
 advanced:
-  custom_generate: true
+ custom_generate: true

@@ -16,14 +16,14 @@
 ```yaml
 name: Custom Module Name
 authors:
-  - name: Author Name
-    handle: '@handle'
-    link: https://github.com/author
+ - name: Author Name
+ handle: '@handle'
+ link: https/github.com/author
 description: |
-  Description of what the module does
+ Description of what the module does
 software:
 techniques:
-  - T1XXX  # MITRE ATT&CK techniques
+ - T1XXX # MITRE ATT&CK techniques
 background: false
 output_extension:
 needs_admin: false
@@ -31,20 +31,20 @@ opsec_safe: true
 language: python
 min_language_version: '3.6'
 comments:
-  - 'Custom module for red team exercise'
+ - 'Custom module for exercise'
 options:
-  - name: Agent
-    description: Agent to run module on
-    required: true
-    value: ''
-  - name: CustomParam
-    description: Custom parameter description
-    required: true
-    value: 'default_value'
+ - name: Agent
+ description: Agent to run module on
+ required: true
+ value: ''
+ - name: CustomParam
+ description: Custom parameter description
+ required: true
+ value: 'default_value'
 script: |
-  # Your Python code here
-  import base64
-  # Use {{ CustomParam }} for parameter substitution
+ # Your Python code here
+ import base64
+ # Use {{ CustomParam }} for parameter substitution
 ```
 
 #### Python Template:
@@ -54,31 +54,31 @@ from empire.server.core.module_models import EmpireModule
 from empire.server.utils.module_util import handle_error_message
 
 class Module:
-    @staticmethod
-    def generate(
-        main_menu: MainMenu,
-        module: EmpireModule,
-        params: dict,
-        obfuscate: bool = False,
-        obfuscation_command: str = "",
-    ) -> tuple[str | None, str | None]:
-        # Get module source code
-        script, err = main_menu.modulesv2.get_module_source(
-            module_name=module.script_path,
-            obfuscate=obfuscate,
-            obfuscate_command=obfuscation_command,
-        )
-        
-        if err:
-            return handle_error_message(err)
-        
-        # Parameter substitution
-        for key, value in params.items():
-            if key.lower() not in ["agent", "computername"]:
-                script = script.replace("{{ " + key + " }}", value)
-                script = script.replace("{{" + key + "}}", value)
-        
-        return script
+ @staticmethod
+ def generate(
+ main_menu: MainMenu,
+ module: EmpireModule,
+ params: dict,
+ obfuscate: bool = False,
+ obfuscation_command: str = "",
+ ) -> tuple[str | None, str | None]:
+ # Get module source code
+ script, err = main_menu.modulesv2.get_module_source(
+ module_name=module.script_path,
+ obfuscate=obfuscate,
+ obfuscate_command=obfuscation_command,
+ )
+
+ if err:
+ return handle_error_message(err)
+
+ # Parameter substitution
+ for key, value in params.items():
+ if key.lower() not in ["agent", "computername"]:
+ script = script.replace("{{ " + key + " }}", value)
+ script = script.replace("{{" + key + "}}", value)
+
+ return script
 ```
 
 ## Installation Process

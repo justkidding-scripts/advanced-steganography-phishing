@@ -1,13 +1,13 @@
 name: Invoke-VoiceTroll
 authors:
-  - name: ''
-    handle: '@424f424f'
-    link: https://twitter.com/424f424f
+ - name: ''
+ handle: '@424f424f'
+ link: https/twitter.com/424f424f
 description: Reads text aloud via synthesized voice on target.
 software: ''
 tactics: []
 techniques:
-  - T1491
+ - T1491
 background: true
 output_extension:
 needs_admin: false
@@ -15,30 +15,30 @@ opsec_safe: false
 language: powershell
 min_language_version: '2'
 comments:
-  - http://www.instructables.com/id/Make-your-computer-talk-with-powershell/
+ - http/www.instructables.com/id/Make-your-computer-talk-with-powershell/
 options:
-  - name: Agent
-    description: Agent to run module on.
-    required: true
-    value: ''
-  - name: VoiceText
-    description: Text to synthesize on target.
-    required: true
-    value: ''
+ - name: Agent
+ description: Agent to run module on.
+ required: true
+ value: ''
+ - name: VoiceText
+ description: Text to synthesize on target.
+ required: true
+ value: ''
 script: |
-  Function Invoke-VoiceTroll
+ Function Invoke-VoiceTroll
 
-  {
-      [CmdletBinding()]
-      Param (
-          [Parameter(Mandatory = $True, Position = 0)]
-          [ValidateNotNullOrEmpty()]
-          [String] $VoiceText
-      )
+ {
+ [CmdletBinding()]
+ Param (
+ [Parameter(Mandatory = $True, Position = 0)]
+ [ValidateNotNullOrEmpty()]
+ [String] $VoiceText
+ )
 
-      Set-StrictMode -version 2
-      Add-Type -AssemblyName System.Speech
-      $synth = New-Object -TypeName System.Speech.Synthesis.SpeechSynthesizer
-      $synth.Speak($VoiceText)
-  }
+ Set-StrictMode -version 2
+ Add-Type -AssemblyName System.Speech
+ $synth = New-Object -TypeName System.Speech.Synthesis.SpeechSynthesizer
+ $synth.Speak($VoiceText)
+ }
 script_end: Invoke-VoiceTroll {{ PARAMS }}

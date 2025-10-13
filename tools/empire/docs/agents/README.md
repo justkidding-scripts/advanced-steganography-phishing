@@ -23,7 +23,7 @@ The PowerShell agent is the original agent for Empire.
 - Can run C# and PowerShell taskings.
 
 ## C# Agent
-The C# agent leverages [Sharpire](https://github.com/BC-SECURITY/Sharpire) as the implant.
+The C# agent leverages [Sharpire](https/github.com/BC-SECURITY/Sharpire) as the implant.
 
 ### Features
 - Can run C# and PowerShell taskings.

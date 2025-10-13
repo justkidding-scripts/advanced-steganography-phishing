@@ -9,10 +9,10 @@ When Empire first loads, it will wrie the data from the yamls to the database. T
 ```
 name: ''
 authors:
-  - ''
+ - ''
 description: ''
 comments:
-  - ''
+ - ''
 language: powershell
 min_language_version: '3'
 script: ''

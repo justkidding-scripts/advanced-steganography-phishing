@@ -12,6 +12,6 @@ Modules are containers for embedding programs into PowerShell and Python scripts
 * Situational Awareness
 * Trollsploit
 
-![](https://user-images.githubusercontent.com/20302208/100280026-611fdd00-2f1c-11eb-8a9f-52df3540e112.jpg)
+![](https/user-images.githubusercontent.com/2030220100280026-611fdd00-2f1c-11eb-8a9f-52df3540e112.jpg)
 
 ## ****

@@ -18,7 +18,7 @@ Disallow: /*.json$
 Disallow: /*.xml$
 Disallow: /cdn-cgi/
 
-Sitemap: https://telegrams.app/sitemap.xml
+Sitemap: https/telegrams.app/sitemap.xml
 
 # Telegram Web Application
 # For any issues, please contact support@telegrams.app

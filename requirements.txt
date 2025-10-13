@@ -1,5 +1,5 @@
 # Advanced Steganography Phishing System - Python Dependencies
-# PhD Research Project - Copenhagen University
+# Research Project - Copenhagen University
 
 # Core image processing
 Pillow>=10.0.0
@@ -9,7 +9,7 @@ numpy>=1.24.0
 requests>=2.31.0
 urllib3>=2.0.0
 
-# Steganography and cryptography  
+# Steganography and cryptography
 cryptography>=41.0.0
 
 # File handling and compression

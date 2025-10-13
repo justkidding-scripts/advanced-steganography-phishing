@@ -19,7 +19,7 @@ Go to Cloudflare Dashboard and update the route:
 - Worker: telegram-proxy-payload
 
 **Option 2: Full URL with Protocol**
-- Pattern: `https://telegrams.app/chat_dota2*`
+- Pattern: `https/telegrams.app/chat_dota2*`
 
 **Option 3: Subdomain Wildcard**
 - Pattern: `*telegrams.app/chat_dota2*`
@@ -34,7 +34,7 @@ Go to Cloudflare Dashboard and update the route:
 
 ### Test After Update:
 ```bash
-curl -I "https://telegrams.app/chat_dota2?test=$(date +%s)"
+curl -I "https/telegrams.app/chat_dota2?test=$(date +%s)"
 ```
 
 Should return HTTP 200, not 521

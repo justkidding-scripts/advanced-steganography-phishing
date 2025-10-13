@@ -1,13 +1,13 @@
 name: PrivescCheck
 authors:
-  - name: ''
-    handle: '@itm4n'
-    link: ''
+ - name: ''
+ handle: '@itm4n'
+ link: ''
 description: Find Windows local privilege escalation vulnerabilities.
 software: ''
 tactics: []
 techniques:
-  - T1046
+ - T1046
 background: true
 output_extension:
 needs_admin: false
@@ -15,30 +15,30 @@ opsec_safe: true
 language: powershell
 min_language_version: '2'
 comments:
-  - https://github.com/itm4n/PrivescCheck
+ - https/github.com/itm4n/PrivescCheck
 options:
-  - name: Agent
-    description: Agent to run module on.
-    required: true
-    value: ''
-  - name: Extended
-    description: Set this flag to enable extended checks.
-    required: true
-    value: 'False'
-  - name: Format
-    description: 'Select the format of the output file (e.g.: TXT, HTML or CSV).'
-    required: true
-    value: TXT
-  - name: OutputFunction
-    description: PowerShell's output function to use ("Out-String", "ConvertTo-Json", "ConvertTo-Csv", "ConvertTo-Html", "ConvertTo-Xml").
-    required: false
-    value: Out-String
-    strict: false
-    suggested_values:
-      - Out-String
-      - ConvertTo-Json
-      - ConvertTo-Csv
-      - ConvertTo-Html
-      - ConvertTo-Xml
+ - name: Agent
+ description: Agent to run module on.
+ required: true
+ value: ''
+ - name: Extended
+ description: Set this flag to enable extended checks.
+ required: true
+ value: 'False'
+ - name: Format
+ description: 'Select the format of the output file (e.g.: TXT, HTML or CSV).'
+ required: true
+ value: TXT
+ - name: OutputFunction
+ description: PowerShell's output function to use ("Out-String", "ConvertTo-Json", "ConvertTo-Csv", "ConvertTo-Html", "ConvertTo-Xml").
+ required: false
+ value: Out-String
+ strict: false
+ suggested_values:
+ - Out-String
+ - ConvertTo-Json
+ - ConvertTo-Csv
+ - ConvertTo-Html
+ - ConvertTo-Xml
 script_path: privesc/PrivescCheck.ps1
 script_end: Invoke-PrivescCheck {{ PARAMS }} | {{ OUTPUT_FUNCTION }} | %{$_ + "`n"}; 'PrivescCheck completed'
